@@ -30,7 +30,7 @@ exports.newUser = (req, res) => {
     });
   }
 
-  const stringFields = ["username", "password", "firstName", "lastName"];
+  const stringFields = ["username", "password", "email"];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== "string"
   );
@@ -91,10 +91,9 @@ exports.newUser = (req, res) => {
     });
   }
 
-  let { username, password, firstName = "", lastName = "" } = req.body;
+  let { username, password, email = "" } = req.body;
 
-  firstName = firstName.trim();
-  lastName = lastName.trim();
+  email = email.trim();
 
   return User.find({ username })
     .count()
@@ -114,8 +113,7 @@ exports.newUser = (req, res) => {
       return User.create({
         username,
         password: hash,
-        firstName,
-        lastName
+        email
       });
     })
     .then(user => {

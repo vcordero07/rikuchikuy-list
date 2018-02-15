@@ -15,8 +15,7 @@ chai.use(chaiHttp);
 describe("Protected endpoint", function() {
   const username = "exampleUser";
   const password = "examplePass";
-  const firstName = "Example";
-  const lastName = "User";
+  const email = "User@example.com";
 
   before(function() {
     return runServer();
@@ -31,8 +30,7 @@ describe("Protected endpoint", function() {
       User.create({
         username,
         password,
-        firstName,
-        lastName
+        email
       })
     );
   });
@@ -61,8 +59,7 @@ describe("Protected endpoint", function() {
       const token = jwt.sign(
         {
           username,
-          firstName,
-          lastName
+          email
         },
         "wrongSecret",
         {
@@ -90,8 +87,7 @@ describe("Protected endpoint", function() {
         {
           user: {
             username,
-            firstName,
-            lastName
+            email
           },
           exp: Math.floor(Date.now() / 1000) - 10
         },
@@ -121,8 +117,7 @@ describe("Protected endpoint", function() {
         {
           user: {
             username,
-            firstName,
-            lastName
+            email
           }
         },
         JWT_SECRET,
