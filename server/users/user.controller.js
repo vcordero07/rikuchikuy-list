@@ -8,6 +8,15 @@ exports.getAllUsers = (req, res) => {
 
 exports.getSingleUser = (req, res) => {};
 
+exports.updateUser = (req, res) => {};
+
+exports.deleteUser = (req, res) => {
+  User.findByIdAndRemove(req.params.id).then(() => {
+    console.log(`deleted user from db`);
+    res.status(204).end();
+  });
+};
+
 exports.newUser = (req, res) => {
   const requiredFields = ["username", "password"];
   const missingField = requiredFields.find(field => !(field in req.body));

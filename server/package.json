@@ -4,6 +4,7 @@
   "description": "Server to Rikuchikuy List app",
   "main": "server.js",
   "scripts": {
+    "test": "mocha ./tests/",
     "start": "node server.js"
   },
   "author": "Virgilio Cordero",
