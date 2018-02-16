@@ -16,7 +16,7 @@ export class HeaderBar extends React.Component {
     }
     return (
       <div className="header-bar">
-        <h1>Foo App</h1>
+        <h1>List App</h1>
         {logOutButton}
       </div>
     );
