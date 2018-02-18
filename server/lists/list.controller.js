@@ -45,9 +45,7 @@ exports.updateList = (req, res) => {
       .status(400)
       .json({ error: "Missing list title in request body: updateList" });
   }
-  List.findByIdAndUpdate(req.params.listId, {
-    title: upList
-  })
+  List.findByIdAndUpdate(req.params.listId, { title: upList })
     .then(list => res.status(202).json(list.serialize()))
     .catch(err =>
       res.status(500).json({ meesage: "Internal server error: updateList" })
