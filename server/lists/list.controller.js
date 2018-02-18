@@ -16,9 +16,46 @@ exports.getSingleList = (req, res) => {
     );
 };
 
-exports.newList = (req, res) => {};
+exports.newList = (req, res) => {
+  if (!req.body.title) {
+    return res
+      .status(400)
+      .json({ error: "Missing title list in requrest body: newList" });
+  }
+  List.create({
+    title: req.body.title
+  })
+    .then(item => {
+      return res.status(201).json(item.serialize());
+    })
+    .catch(err =>
+      res.status(500).json({ message: "Internal server error: newList" })
+    );
+};
 
-exports.updateList = (req, res) => {};
+exports.updateList = (req, res) => {
+  const upList = {};
+  const updateableFields = ["title"];
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      upList[field] = req.body[field];
+    }
+  });
+  if (!upList.title) {
+    return res
+      .status(400)
+      .json({ error: "Missing list title in request body: updateList" });
+  }
+  List.findByIdAndUpdate(req.params.id, upList, { new: true })
+    .then(list => {
+      if (list) {
+        res.json(list.serialize());
+      }
+    })
+    .catch(err =>
+      res.status(500).json({ meesage: "Internal server error: updateList" })
+    );
+};
 
 exports.deleteList = (req, res) => {
   List.findByIdAndRemove(req.params.id).then(() => {

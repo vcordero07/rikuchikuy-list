@@ -12,7 +12,7 @@ const listSchema = mongoose.Schema({
       ref: "Item"
     }
   ],
-  dateCreated: {
+  created: {
     type: Date,
     required: true,
     default: Date.now
@@ -23,7 +23,7 @@ listSchema.methods.serialize = function() {
   return {
     id: this._id,
     title: this.title,
-    dateCreated: this.dateCreated
+    created: this.created
   };
 };
 

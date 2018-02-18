@@ -31,7 +31,7 @@ exports.newItem = (req, res) => {
   if (!req.body.title) {
     return res
       .status(400)
-      .json({ error: "Missing `title` in request body: newItem" });
+      .json({ error: "Missing item `title` in request body: newItem" });
   }
 
   Item.create({
@@ -43,25 +43,27 @@ exports.newItem = (req, res) => {
     .then(item => {
       return res.status(201).json(item.serialize());
     })
-    .catch(err => res.status(500).json({ message: "Internal server error: newItem" });
+    .catch(err =>
+      res.status(500).json({ message: "Internal server error: newItem" })
+    );
 };
 
 exports.updateItem = (req, res) => {
-  const updateItem = {};
+  const upItem = {};
   const updateableFields = ["title", "completed", "link", "price", "note"];
   updateableFields.forEach(field => {
     if (field in req.body) {
-      updateItem[field] = req.body[field];
+      upItem[field] = req.body[field];
     }
   });
 
-  if (!updateItem.title) {
+  if (!upItem.title) {
     return res
       .status(400)
       .json({ error: "Missing `title` in request body: updateItem" });
   }
 
-  Item.findByIdAndUpdate(req.params.id, updateItem, { new: true })
+  Item.findByIdAndUpdate(req.params.id, upItem, { new: true })
     .then(item => {
       if (item) {
         res.json(item.serialize());
