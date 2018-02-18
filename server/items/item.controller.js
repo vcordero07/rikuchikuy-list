@@ -1,3 +1,4 @@
+"use strict";
 const { Item } = require("./item.model");
 
 exports.getAllItems = (req, res) => {

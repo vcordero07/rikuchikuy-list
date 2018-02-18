@@ -1,3 +1,4 @@
+"use strict";
 const { User } = require("./user.model");
 
 exports.getAllUsers = (req, res) => {

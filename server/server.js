@@ -6,6 +6,8 @@ const morgan = require("morgan");
 const passport = require("passport");
 
 const { router: usersRouter } = require("./users/user.index");
+const { router: itemsRouter } = require("./items/item.index");
+const { router: listsRouter } = require("./lists/list.index");
 const {
   router: authRouter,
   localStrategy,
@@ -33,8 +35,10 @@ app.use(function(req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use("/api/users/", usersRouter);
+app.use("/api/lists/", listsRouter);
 app.use("/api/auth/", authRouter);
+app.use("/api/users/", usersRouter);
+// app.use("/api/");
 
 const jwtAuth = passport.authenticate("jwt", { session: false });
 

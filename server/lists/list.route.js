@@ -1,12 +1,17 @@
 "use strict";
 const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const listController = require("./list.controller");
 const router = express.Router();
+const jsonParser = bodyParser.json();
 
-router.get("/api/list/", listController.getAllList);
-router.get("/api/list/:listId", listController.getSingleList);
-router.post("/api/list/", listController.newList);
-router.put("api/list/:listId", listController.updateList);
-router.delete("api/list/:listId", listController.deleteList);
+mongoose.Promise = global.Promise;
+
+router.get("/", listController.getAllList);
+router.get("/:listId", listController.getSingleList);
+router.post("/add/", jsonParser, listController.newList);
+router.put("/:listId", jsonParser, listController.updateList);
+router.delete("/:listId", listController.deleteList);
 
 module.exports = { router };
