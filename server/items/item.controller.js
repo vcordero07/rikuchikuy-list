@@ -22,10 +22,16 @@ exports.getSingleItem = (req, res) => {
 };
 
 exports.deleteItem = (req, res) => {
-  Item.findByIdAndRemove(req.params.id).then(() => {
-    console.log(`deleted item from db`);
-    res.status(204).end();
-  });
+  Item.findByIdAndRemove(req.params.id)
+    .then(() => {
+      console.log(`deleted item from db`);
+      res
+        .status(200)
+        .json({ message: "Successfully deleted an item from the list" });
+    })
+    .catch(err =>
+      res.status(500).json({ message: "Internal server error: deleteItem" })
+    );
 };
 
 exports.newItem = (req, res) => {

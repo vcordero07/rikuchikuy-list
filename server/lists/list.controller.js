@@ -57,7 +57,7 @@ exports.deleteList = (req, res) => {
     .then(() => {
       console.log("deleted list from db");
       res
-        .status(204)
+        .status(200)
         .json({ message: `success delete list id: '${req.params.listId}'` });
     })
     .catch(err =>
