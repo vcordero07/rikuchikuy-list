@@ -7,9 +7,25 @@ exports.getAllUsers = (req, res) => {
     .catch(err => res.status(500).json({ message: "Internal server error" }));
 };
 
-exports.getSingleUser = (req, res) => {};
+exports.getSingleUser = (req, res) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user.serialize()))
+    .catch(err =>
+      res.status(500).json({ message: "Internal server error: getSingleUser" })
+    );
+};
 
-exports.updateUser = (req, res) => {};
+exports.updateUser = (req, res) => {
+  User.findByIdAndUpdate(req.params.id, {
+    username: req.body.username,
+    email: req.body.email
+  })
+    .then(u => res.status(202).json(u.serialize()))
+    .catch(err => {
+      console.log("err:", err);
+      res.status(500).json({ meesage: "Internal server error: updateUser" });
+    });
+};
 
 exports.deleteUser = (req, res) => {
   User.findByIdAndRemove(req.params.id).then(() => {

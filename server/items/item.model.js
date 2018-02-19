@@ -9,11 +9,11 @@ const itemSchema = mongoose.Schema({
   link: { type: String, default: "" },
   price: { type: Number, default: 0 },
   completed: { type: Boolean, default: false },
-  note: { type: String, default: "" },
-  _list: {
-    type: mongoose.Schema.ObjectId,
-    ref: "List"
-  }
+  note: { type: String, default: "" }
+  // _list: {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref: "List"
+  // }
 });
 
 itemSchema.methods.serialize = function() {

@@ -7,14 +7,23 @@ mongoose.Promise = global.Promise;
 const UserSchema = mongoose.Schema({
   username: {
     type: String,
-    requried: true,
-    unique: true
+    requried: true
+    // unique: true
   },
   password: {
     type: String,
     required: true
   },
-  email: { type: String, default: "" }
+  email: {
+    type: String,
+    default: ""
+  },
+  _list: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "List"
+    }
+  ]
 });
 
 UserSchema.methods.serialize = function() {
