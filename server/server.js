@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const passport = require("passport");
+const bodyParser = require("body-parser");
 
 const { router: usersRouter } = require("./users/user.index");
 const { router: listsRouter } = require("./lists/list.index");
@@ -21,6 +22,7 @@ const { PORT, DATABASE_URL } = require("./config");
 const app = express();
 
 app.use(morgan("common"));
+app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

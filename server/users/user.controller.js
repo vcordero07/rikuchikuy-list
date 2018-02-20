@@ -3,12 +3,16 @@ const { User } = require("./user.model");
 
 exports.getAllUsers = (req, res) => {
   return User.find()
+    .populate({ path: "_list" })
+    .exec()
     .then(users => res.json(users.map(user => user.serialize())))
     .catch(err => res.status(500).json({ message: "Internal server error" }));
 };
 
 exports.getSingleUser = (req, res) => {
   User.findById(req.params.id)
+    .populate({ path: "_list" })
+    .exec()
     .then(user => res.json(user.serialize()))
     .catch(err =>
       res.status(500).json({ message: "Internal server error: getSingleUser" })
@@ -16,6 +20,7 @@ exports.getSingleUser = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
+  console.log(typeof req.body.username === "undefined");
   User.findByIdAndUpdate(req.params.id, {
     username: req.body.username,
     email: req.body.email

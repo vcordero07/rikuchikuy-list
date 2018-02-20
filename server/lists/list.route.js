@@ -1,17 +1,17 @@
 "use strict";
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+
 const listController = require("./list.controller");
+const { jwtAuth } = require("../auth/auth.route");
 const router = express.Router();
-const jsonParser = bodyParser.json();
 
 mongoose.Promise = global.Promise;
 
-router.get("/", listController.getAllList);
-router.get("/:listId", listController.getSingleList);
-router.post("/add/", jsonParser, listController.newList);
-router.put("/:listId", jsonParser, listController.updateList);
-router.delete("/:listId", listController.deleteList);
+router.get("/", jwtAuth, listController.getAllList);
+router.get("/:listId", jwtAuth, listController.getSingleList);
+router.post("/add/", jwtAuth, listController.newList);
+router.put("/:listId", jwtAuth, listController.updateList);
+router.delete("/:listId", jwtAuth, listController.deleteList);
 
 module.exports = { router };

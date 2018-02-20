@@ -1,7 +1,9 @@
 "use strict";
 const { List } = require("./list.model");
+const { User } = require("../users/user.model");
 
 exports.getAllList = (req, res) => {
+  console.log("this is the user", req.user);
   return List.find()
     .then(lists => res.json(lists.map(list => list.serialize())))
     .catch(err => {
@@ -29,6 +31,11 @@ exports.newList = (req, res) => {
   List.create({
     title: req.body.title
   })
+    .then(data => {
+      return User.findByIdAndUpdate(req.user.id, {
+        $push: { _list: data._id }
+      }).then(() => data);
+    })
     .then(item => {
       return res.status(201).json(item.serialize());
     })

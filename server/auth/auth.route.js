@@ -15,4 +15,4 @@ router.use(bodyParser.json());
 router.post("/login", localAuth, authController.login);
 router.post("/refresh", jwtAuth, authController.refresh);
 
-module.exports = { router };
+module.exports = { router, localAuth, jwtAuth };

@@ -1,14 +1,13 @@
 "use strict";
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-
-mongoose.Promise = global.Promise;
+const { List } = require("../lists/list.model");
 
 const UserSchema = mongoose.Schema({
   username: {
     type: String,
     requried: true
-    // unique: true
+    // unique: true //ask emanuel about updating user with unique field.
   },
   password: {
     type: String,
@@ -24,6 +23,15 @@ const UserSchema = mongoose.Schema({
       ref: "List"
     }
   ]
+});
+UserSchema.pre("remove", function(next) {
+  List.find({
+    _id: { $in: this._list }
+  }).then(lists => {
+    lists.forEach(ele => {
+      ele.remove();
+    });
+  });
 });
 
 UserSchema.methods.serialize = function() {
