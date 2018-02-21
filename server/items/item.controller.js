@@ -1,5 +1,6 @@
 "use strict";
 const { Item } = require("./item.model");
+const { List } = require("../lists/list.model");
 
 exports.getAllItems = (req, res) => {
   return Item.find()
@@ -47,9 +48,17 @@ exports.newItem = (req, res) => {
     price: req.body.price,
     note: req.body.note
   })
+    .then(data => {
+      // console.log("data:", data);
+      // console.log("req.params.listId:", req.params.listId);
+      return List.findByIdAndUpdate(req.params.listId, {
+        $push: { _items: data._id }
+      }).then(() => data);
+    })
     .then(item => {
       return res.status(201).json(item.serialize());
     })
+
     .catch(err =>
       res.status(500).json({ message: "Internal server error: newItem" })
     );

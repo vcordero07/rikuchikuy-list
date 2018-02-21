@@ -54,22 +54,39 @@ exports.updateList = (req, res) => {
   List.findByIdAndUpdate(req.params.listId, { title: upList })
     .then(list => res.status(202).json(list.serialize()))
     .catch(err =>
-      res.status(500).json({ meesage: "Internal server error: updateList" })
+      res.status(500).json({ message: "Internal server error: updateList" })
     );
 };
 
 exports.deleteList = (req, res) => {
   const listID = req.params.listId;
-  List.findById(listID).then(listInfo => {
-    console.log("listInfo:", listInfo);
-  });
-
-  // List.findByIdAndRemove(listID)
-  //   .then(() => {
-  //     console.log("deleted list from db");
-  //     res.status(200).json({ message: `success delete list id: '${listID}'` });
-  //   })
-  //   .catch(err =>
-  //     res.status(500).json({ message: "Internal server error: deleteList" })
-  //   );
+  List.findById(listID)
+    .then(listInfo => {
+      let listItems = listInfo._items;
+      // console.log(listItems);
+      // if (listInfo._items[0] != null) {
+      listInfo._items.forEach(ele => {
+        // console.log(ele);
+        Item.findByIdAndRemove(ele)
+          .then(success => console.log("successfully remove an ele"))
+          .catch(err =>
+            console.log("err trying to findByIdAndRemove an ele", err)
+          );
+      });
+    })
+    .then(() => {
+      return User.findOneAndUpdate(
+        { _id: req.user.id },
+        { $pull: { _lists: listID } },
+        { safe: true }
+      );
+    })
+    .then(() => {
+      return List.findByIdAndRemove(listID);
+    })
+    .then(() => {
+      console.log("success");
+      res.status(204).end();
+    })
+    .catch(err => console.error(err));
 };

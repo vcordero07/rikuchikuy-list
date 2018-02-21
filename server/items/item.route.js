@@ -1,16 +1,14 @@
 "use strict";
 const express = require("express");
 const mongoose = require("mongoose");
-
 const itemController = require("./item.controller");
+const { jwtAuth } = require("../auth/auth.route");
 const router = express.Router();
 
-mongoose.Promise = global.Promise;
-
-router.get("/:listId/items", itemController.getAllItems);
-router.get("/:listId/items/:id", itemController.getSingleItem);
-router.post("/:listId/", itemController.newItem);
-router.put("/:listId/items/:id", itemController.updateItem);
-router.delete("/:listId/items/:id", itemController.deleteItem);
+router.get("/:listId/items", jwtAuth, itemController.getAllItems);
+router.get("/:listId/items/:id", jwtAuth, itemController.getSingleItem);
+router.post("/:listId/", jwtAuth, itemController.newItem);
+router.put("/:listId/items/:id", jwtAuth, itemController.updateItem);
+router.delete("/:listId/items/:id", jwtAuth, itemController.deleteItem);
 
 module.exports = { router };
