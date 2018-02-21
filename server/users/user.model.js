@@ -17,13 +17,14 @@ const UserSchema = mongoose.Schema({
     type: String,
     default: ""
   },
-  _list: [
+  _lists: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "List"
+      ref: "Lists"
     }
   ]
 });
+
 UserSchema.pre("remove", function(next) {
   List.find({
     _id: { $in: this._list }

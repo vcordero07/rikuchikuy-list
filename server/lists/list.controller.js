@@ -1,6 +1,7 @@
 "use strict";
 const { List } = require("./list.model");
 const { User } = require("../users/user.model");
+const { Item } = require("../items/item.model");
 
 exports.getAllList = (req, res) => {
   console.log("this is the user", req.user);
@@ -28,12 +29,10 @@ exports.newList = (req, res) => {
       .status(400)
       .json({ error: "Missing title list in requrest body: newList" });
   }
-  List.create({
-    title: req.body.title
-  })
+  List.create({ title: req.body.title })
     .then(data => {
       return User.findByIdAndUpdate(req.user.id, {
-        $push: { _list: data._id }
+        $push: { _lists: data._id }
       }).then(() => data);
     })
     .then(item => {
@@ -60,14 +59,17 @@ exports.updateList = (req, res) => {
 };
 
 exports.deleteList = (req, res) => {
-  List.findByIdAndRemove(req.params.listId)
-    .then(() => {
-      console.log("deleted list from db");
-      res
-        .status(200)
-        .json({ message: `success delete list id: '${req.params.listId}'` });
-    })
-    .catch(err =>
-      res.status(500).json({ message: "Internal server error: deleteList" })
-    );
+  const listID = req.params.listId;
+  List.findById(listID).then(listInfo => {
+    console.log("listInfo:", listInfo);
+  });
+
+  // List.findByIdAndRemove(listID)
+  //   .then(() => {
+  //     console.log("deleted list from db");
+  //     res.status(200).json({ message: `success delete list id: '${listID}'` });
+  //   })
+  //   .catch(err =>
+  //     res.status(500).json({ message: "Internal server error: deleteList" })
+  //   );
 };
