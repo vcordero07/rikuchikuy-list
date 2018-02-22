@@ -9,7 +9,7 @@ const listSchema = mongoose.Schema({
   _items: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Items"
+      ref: "Item"
     }
   ],
   created: {

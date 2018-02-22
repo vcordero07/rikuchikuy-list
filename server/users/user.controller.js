@@ -1,5 +1,7 @@
 "use strict";
 const { User } = require("./user.model");
+const { List } = require("../lists/list.model");
+const { Item } = require("../items/item.model");
 
 exports.getAllUsers = (req, res) => {
   return User.find()
@@ -33,10 +35,14 @@ exports.updateUser = (req, res) => {
 };
 
 exports.deleteUser = (req, res) => {
-  User.findByIdAndRemove(req.params.id).then(() => {
-    console.log(`deleted user from db`);
-    res.status(204).end();
-  });
+  User.findByIdAndRemove(req.params.id)
+    .then(() => {
+      console.log(`deleted user from db`);
+      res.status(204).end();
+    })
+    .catch(err =>
+      res.status(500).json({ meesage: "Internal server error: deleteUser" })
+    );
 };
 
 exports.newUser = (req, res) => {

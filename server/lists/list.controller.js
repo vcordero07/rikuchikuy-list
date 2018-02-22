@@ -1,11 +1,13 @@
 "use strict";
 const { List } = require("./list.model");
-const { User } = require("../users/user.model");
 const { Item } = require("../items/item.model");
+const { User } = require("../users/user.model");
 
 exports.getAllList = (req, res) => {
   console.log("this is the user", req.user);
   return List.find()
+    .populate("_items") //ask E "err: { MissingSchemaError: Schema hasn't been registered for model "Items"."
+    .exec()
     .then(lists => res.json(lists.map(list => list.serialize())))
     .catch(err => {
       console.log("err:", err);
@@ -16,6 +18,8 @@ exports.getAllList = (req, res) => {
 exports.getSingleList = (req, res) => {
   console.log("req.params:", req.params.listId);
   List.findById(req.params.listId)
+    // .populate({ path: "_items" })  //ask E "err: { MissingSchemaError: Schema hasn't been registered for model "Items"."
+    // .exec()
     .then(item => res.json(item.serialize()))
     .catch(err =>
       res.status(500).json({ message: "Internal server error: getSingleList" })
@@ -67,11 +71,11 @@ exports.deleteList = (req, res) => {
       // if (listInfo._items[0] != null) {
       listInfo._items.forEach(ele => {
         // console.log(ele);
-        Item.findByIdAndRemove(ele)
-          .then(success => console.log("successfully remove an ele"))
-          .catch(err =>
-            console.log("err trying to findByIdAndRemove an ele", err)
-          );
+        Item.findByIdAndRemove(ele);
+        // .then(success => console.log("successfully remove an ele"))
+        // .catch(err =>
+        //   console.log("err trying to findByIdAndRemove an ele", err)
+        // );
       });
     })
     .then(() => {
@@ -90,3 +94,21 @@ exports.deleteList = (req, res) => {
     })
     .catch(err => console.error(err));
 };
+
+// exports.deleteList = async (req, res) => {
+//   try {
+//     const listID = req.params.listId;
+//     const list = await List.findById(listId);
+//     const promises = list._items.map(el => Item.findByIdAndRemove(el));
+//     await Promise.all(promises);
+//     await User.findOneAndUpdate(
+//       { _id: req.user.id },
+//       { $pull: { _lists: listID } },
+//       { safe: true }
+//     );
+//     await List.findByIdAndRemove(listID);
+//     res.sendStatus(204);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// };
