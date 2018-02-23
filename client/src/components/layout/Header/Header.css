@@ -1,0 +1,47 @@
+.Header-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+#Header {
+  /* background-color: #ff5252; */
+  background-color: #e74c3c;
+  height: 50px;
+  border-bottom: 1px solid;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.Header-title {
+  margin: 0;
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.Header-navbar-menu {
+  float: right;
+  margin: 0;
+}
+
+.Header-navbar-ul {
+  list-style: none;
+  position: relative;
+  padding: 10px 15px;
+  display: block;
+}
+
+.Header-intro {
+  font-size: large;
+  padding: 15px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
