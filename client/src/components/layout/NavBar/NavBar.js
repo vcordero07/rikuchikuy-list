@@ -2,21 +2,6 @@ import React from "react";
 import NavItems from "./NavItems";
 import "./NavBar.css";
 
-// export default function HeaderSection(props) {
-//   return (
-//     <section id="Header">
-//       <h1 className="Header-title">Rikuchikuy List</h1>
-//       <div className="Header-navbar-menu">
-//         <ul className="Header-navbar-ul">
-//           <li>Sign In</li>
-//           <li>List</li>
-//           <li>Settings</li>
-//         </ul>
-//       </div>
-//     </section>
-//   );
-// }
-
 export default class NavBar extends React.Component {
   state = {
     navLinks: [
