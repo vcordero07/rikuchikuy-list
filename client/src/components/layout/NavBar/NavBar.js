@@ -5,8 +5,8 @@ import "./NavBar.css";
 export default class NavBar extends React.Component {
   state = {
     navLinks: [
-      { title: "Home", href: "#" },
-      { title: "List", href: "#" },
+      { title: "Sign in", href: "/login" },
+      { title: "List", href: "/list" },
       { title: "Settings", href: "#" }
     ]
   };

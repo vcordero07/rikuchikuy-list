@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+body {
+  background-color: #fbfbfb;
+}
+
+.Home-logo {
+  animation: Home-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Home-header {
+  /* background-color: #ff5252; */
+  background-color: #e74c3c;
+  height: 50px;
+  border-bottom: 1px solid;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.Home-title {
+  margin: 0;
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.Home-navbar-menu {
+  float: right;
+  margin: 0;
+}
+
+.Home-navbar-ul {
+  list-style: none;
+  position: relative;
+  padding: 10px 15px;
+  display: block;
+}
+
+.Home-intro {
+  font-size: large;
+  padding: 15px;
+}
+
+.Home-container {
+  height: 100%;
+  width: 100%;
+}

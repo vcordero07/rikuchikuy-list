@@ -1,26 +1,25 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Login from "./pages/LoginPage/Login";
+import Signup from "./pages/SignupPage/Signup";
+import List from "./pages/ListPage/List";
+import Home from "./pages/HomePage/Home";
+
 import "./App.css";
-import { Button } from "./components";
-import NavBarSection from "./components/layout/NavBar/NavBar";
-import OverlaySection from "./components/layout/Overlay/Overlay";
-import appText from "./utils/appText";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <NavBarSection />
-        <div className="App-container">
-          <p className="App-intro">
-            {appText.landingPage.welcome}
-            <br />
-          </p>
-          <p className="App-intro">{appText.landingPage.intro}</p>
+      <Router>
+        <div className="App">
+          <main>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login/" component={Login} />
+            <Route exact path="/signup/" component={Signup} />
+            <Route exact path="/List/" component={List} />
+          </main>
         </div>
-        <div>
-          <OverlaySection />
-        </div>
-      </div>
+      </Router>
     );
   }
 }
