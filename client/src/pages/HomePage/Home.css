@@ -1,6 +1,4 @@
-body {
-  background-color: #fbfbfb;
-}
+body.home {}
 
 .home-logo {
   animation: Home-logo-spin infinite 20s linear;
@@ -13,16 +11,60 @@ body {
   height: 65px;
   border-bottom: 1px solid;
   margin-bottom: 20px;
-  color: white;
+  color: #fff;
 }
 
 .home-intro {
+  background: #e74c3c;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+}
+
+.home-intro p {
   font-size: large;
   padding: 15px;
 }
 
+.home-img {
+  background-image: url(../../assets/img/rikuchikuy2.svg);
+  background-position: center center;
+  background-size: contain;
+  background-blend-mode: luminosity;
+  opacity: 0.9;
+}
+
 .home-container {}
 
-.home-signup {
+/* .home-signup {
   color: #247bc6 !important;
+} */
+
+.home-btn {
+  background-color: #fff;
+  color: #e74c3c;
+  margin: 3%;
+  display: inline-block;
+  padding: 12px 15px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+  outline: none;
+}
+
+.home-btn:hover {
+  color: #e74c3c;
+  background-color: #fff;
+}
+
+.home-btn a {
+  text-decoration: none;
+  color: #e74c3c;
+}
+
+.home-btn a:hover {
+  text-decoration: none;
+  color: #e74c3c;
+  background-color: #fff;
 }

@@ -6,9 +6,9 @@ import "./List.css";
 class List extends Component {
   render() {
     return (
-      <div className="List Site">
+      <div className="Site">
         <NavBarSection />
-        <div className="Site-content">
+        <div className="Site-content list">
           <p>List</p>
         </div>
         <footer className="Site-footer">

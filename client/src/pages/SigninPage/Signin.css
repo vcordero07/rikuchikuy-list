@@ -11,8 +11,9 @@
 }
 
 .signin form {
+  width: 100%;
   position: relative;
-  margin: 35px 60px 5px;
+  /* margin: 35px 60px 5px; */
   text-align: center !important;
 }
 
@@ -67,8 +68,14 @@
 
 .signin form button {
   font-weight: 300;
-  background-color: #247bc6;
+  background-color: #3498db;
   margin-top: 30px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #3498db;
+  border-color: #34495e;
 }
 
 .signin .signin-title {
@@ -82,11 +89,23 @@
 }
 
 .signin .signup-link a {
-  color: #247bc6;
+  color: #3498db;
+  text-decoration: none;
 }
 
 .copyright {
   color: #6c757d !important;
   margin-top: 3rem !important;
   text-align: center;
+}
+
+.copyright a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 550px) {
+  .signin .signin-col {
+    max-width: 330px;
+  }
 }

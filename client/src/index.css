@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
 
 .Site-content {
   flex: 1 0 auto;
-  padding: 1.5em 1.5em 0;
+  /* padding: 1.5em 1.5em 0; */
   width: 100%;
 }
 

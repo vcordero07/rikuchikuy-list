@@ -1,53 +1,26 @@
 import React from "react";
-import NavItems from "./NavItems";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import "./NavBar.css";
-import navBarLogo from "../../../assets/img/inca8.png";
 
-export default class NavBar extends React.Component {
-  state = {
-    navLinks: [
-      { title: "Sign in", href: "/signin" },
-      { title: "List", href: "/list" },
-      { title: "Settings", href: "#" }
-    ]
-  };
-  render() {
-    const createLinkItem = (item, index) => {
-      return (
-        <NavItems
-          key={item.title + index}
-          href={item.href}
-          title={item.title}
-        />
-      );
-    };
+import NavBarSection from "./NavBarSection";
 
-    const _navLinks = this.state.navLinks.map(createLinkItem);
-
-    return (
-      <div>
-        <nav className="navbar navbar-default">
-          <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#nav-collapse"
-            >
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
-            <a className="navbar-top" href="/">
-              <img alt="Brand" className="NavBar-img" src={navBarLogo} />
-              <span className="navbar-title">Rikuchikuy List</span>
-            </a>
-          </div>
-          <div className="collapse navbar-collapse" id="nav-collapse">
-            <ul className="nav navbar-nav">{_navLinks}</ul>
-          </div>
-        </nav>
-      </div>
-    );
+export function NavBar(props) {
+  if (props.loggedIn) {
+    console.log("NavBar: you're in");
+    // return <Redirect to="/list" />;
+  } else {
+    console.log("NavBar: not yet");
   }
+  return (
+    <div className="NavBar">
+      <NavBarSection />
+    </div>
+  );
 }
+
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(NavBar);

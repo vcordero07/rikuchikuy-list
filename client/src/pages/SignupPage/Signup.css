@@ -11,16 +11,17 @@
 }
 
 .signup form {
+  width: 100%;
   position: relative;
-  margin: 35px 60px 5px;
+  /* margin: 35px 60px 5px; */
   text-align: center !important;
 }
 
 .signup .form-logo {
   margin-bottom: 1.5rem !important;
   border-style: none;
-  width: 120px;
-  height: 120px;
+  width: 85px;
+  height: 85px;
 }
 
 .signup form input {
@@ -54,27 +55,33 @@
 }
 
 .signup form .fa.fa-user {
-  top: 210px;
+  top: 175px;
   font-size: 30px;
   color: #ddd;
 }
 
 .signup .signup-col form .fa.fa-envelope {
-  top: 275px;
+  top: 240px;
   font-size: 25px;
   color: #ddd;
 }
 
 .signup form .fa.fa-lock {
-  top: 330px;
+  top: 295px;
   font-size: 35px;
   color: #ddd;
 }
 
 .signup form button {
   font-weight: 300;
-  background-color: #247bc6;
+  background-color: #3498db;
   margin-top: 30px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #3498db;
+  border-color: #34495e;
 }
 
 .signup .signup-title {
@@ -88,11 +95,23 @@
 }
 
 .signup .signin-link a {
-  color: #247bc6;
+  color: #3498db;
+  text-decoration: none;
 }
 
 .copyright {
   color: #6c757d !important;
   margin-top: 3rem !important;
   text-align: center;
+}
+
+.copyright a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 550px) {
+  .signup .signup-col {
+    max-width: 330px;
+  }
 }

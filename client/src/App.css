@@ -1,5 +1,6 @@
 body {
-  background-color: #fbfbfb;
+  background-color: #f5f5f5;
+  /* //fbfbfb; */
 }
 
 .App-logo {
@@ -13,7 +14,7 @@ body {
   height: 50px;
   border-bottom: 1px solid;
   margin-bottom: 20px;
-  color: white;
+  color: #fff;
 }
 
 .App-title {

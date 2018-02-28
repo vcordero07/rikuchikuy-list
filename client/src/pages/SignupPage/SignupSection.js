@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/users";
 import { login } from "../../actions/auth";
 import signupLogo from "../../assets/img/inca5.png";
 import "./Signup.css";
 
-class SignupSection extends React.Component {
+class SignupSection extends Component {
   state = {
     username: "",
     email: "",
@@ -27,9 +27,7 @@ class SignupSection extends React.Component {
     };
     return this.props
       .dispatch(registerUser(user))
-      .then(() =>
-        this.props.dispatch(login(this.state.username, this.state.password))
-      );
+      .then(() => this.props.dispatch(login(user.username, user.password)));
   };
 
   render() {
@@ -46,7 +44,7 @@ class SignupSection extends React.Component {
                     alt="signup-logo"
                   />
                 </a>
-                <h3 className="signup-title">Please sign in </h3>
+                <h3 className="signup-title">Please sign up </h3>
                 <label htmlFor="username" className="sr-only">
                   Username
                 </label>

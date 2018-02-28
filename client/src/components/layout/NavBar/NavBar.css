@@ -5,11 +5,12 @@
 
 .navbar {
   /* background-color: #ff5252; */
-  background-color: #e74c3c;
+  /* background-color: #e74c3c; */
+  background-color: #fff;
   height: 50px;
   border-bottom: 1px solid;
   margin-bottom: 20px;
-  color: #fff;
+  color: #9a9a9a;
   border: 0;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
@@ -53,23 +54,28 @@
 }
 
 .navbar-default {
-  background-color: #e74c3c;
-  border-color: #c0392b;
+  /* background-color: #e74c3c;
+  border-color: #c0392b; */
+  background-color: #fff;
+  border-color: #e74c3c;
 }
 
 .navbar a {
-  color: #fff;
+  /* color: #fff; */
+  color: #9a9a9a;
   text-decoration: none;
 }
 
 .navbar a:focus,
 .navbar a:hover {
-  color: #fff;
+  /* color: #fff; */
+  color: #9a9a9a;
   text-decoration: none;
 }
 
 .navbar-default .navbar-nav>li>a {
-  color: #fff;
+  /* color: #fff; */
+  color: #9a9a9a;
   font-weight: 400;
 }
 

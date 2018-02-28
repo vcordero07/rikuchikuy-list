@@ -10,7 +10,7 @@ import "./Home.css";
 
 export function Home(props) {
   if (props.loggedIn) {
-    return console.log("you are loggedIn");
+    console.log("you are loggedIn");
   } else {
     console.log("not yet");
   }
@@ -18,17 +18,19 @@ export function Home(props) {
     <div className="home Site">
       <NavBarSection />
       <div className="Site-content">
-        <p className="home-intro">
-          {homeText.landingPage.welcome}
+        <div className="home-intro home-img ">
+          <p>
+            {homeText.landingPage.welcome}
+            <br />
+          </p>
+          <p>{homeText.landingPage.intro}</p>
           <br />
-        </p>
-        <p className="home-intro">{homeText.landingPage.intro}</p>
-        <br />
-        <p className="home-intro">
-          <a className="home-signup" href="/signup">
-            {homeText.landingPage.register}
-          </a>
-        </p>
+          <button className="home-btn">
+            <a className="home-signup" href="/signup">
+              {homeText.landingPage.register}
+            </a>
+          </button>
+        </div>
       </div>
       <footer className="Site-footer">
         <FooterSection />
