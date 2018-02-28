@@ -1,11 +1,6 @@
-* {
-  box-sizing: border-box;
-  /* font-family: 'Roboto', sans-serif; */
-}
-
 .Header-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  /* height: 80px; */
 }
 
 .navbar {
@@ -16,21 +11,26 @@
   margin-bottom: 20px;
   color: #fff;
   border: 0;
-  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2)
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.navbar-top {
+  margin: 0;
+  float: left;
 }
 
 .navbar-title {
-  margin: 0;
-  float: left;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
   font-weight: 700;
+  vertical-align: middle;
 }
 
 .Header-navbar-menu {
   float: right;
   margin: 0;
+  height: 65px;
 }
 
 .Header-navbar-ul {
@@ -46,11 +46,10 @@
 }
 
 .NavBar-img {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .navbar-default {
@@ -58,13 +57,13 @@
   border-color: #c0392b;
 }
 
-a {
+.navbar a {
   color: #fff;
   text-decoration: none;
 }
 
-a:focus,
-a:hover {
+.navbar a:focus,
+.navbar a:hover {
   color: #fff;
   text-decoration: none;
 }

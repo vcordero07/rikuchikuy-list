@@ -1,11 +1,12 @@
 import React from "react";
 import NavItems from "./NavItems";
 import "./NavBar.css";
+import navBarLogo from "../../../assets/img/inca8.png";
 
 export default class NavBar extends React.Component {
   state = {
     navLinks: [
-      { title: "Sign in", href: "/login" },
+      { title: "Sign in", href: "/signin" },
       { title: "List", href: "/list" },
       { title: "Settings", href: "#" }
     ]
@@ -37,13 +38,9 @@ export default class NavBar extends React.Component {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-title" href="#">
-              <img
-                alt="Brand"
-                className="NavBar-img"
-                src={require("./llama-3.png")}
-              />
-              Rikuchikuy List
+            <a className="navbar-top" href="/">
+              <img alt="Brand" className="NavBar-img" src={navBarLogo} />
+              <span className="navbar-title">Rikuchikuy List</span>
             </a>
           </div>
           <div className="collapse navbar-collapse" id="nav-collapse">

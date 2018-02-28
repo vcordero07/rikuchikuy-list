@@ -1,30 +1,43 @@
-import React, { Component } from "react";
-// import { Button } from "./components";
+import React from "react";
+import { connect } from "react-redux";
+
 import NavBarSection from "../../components/layout/NavBar/NavBar";
-import OverlaySection from "../../components/layout/Overlay/Overlay";
+import FooterSection from "../../components/layout/Footer/Footer";
+// import OverlaySection from "../../components/layout/Overlay/Overlay";
 import homeText from "../../utils/homeText";
 
 import "./Home.css";
 
-class Home extends Component {
-  render() {
-    return (
-      <div className="Home">
-        <NavBarSection />
-        <div className="Home-container">
-          <p className="Home-intro">
-            {homeText.landingPage.welcome}
-            <br />
-          </p>
-          <p className="Home-intro">{homeText.landingPage.intro}</p>
-          <br />
-          <p className="Home-intro">
-            <a href="/signup">{homeText.landingPage.register}</a>
-          </p>
-        </div>
-      </div>
-    );
+export function Home(props) {
+  if (props.loggedIn) {
+    return console.log("you are loggedIn");
+  } else {
+    console.log("not yet");
   }
+  return (
+    <div className="home Site">
+      <NavBarSection />
+      <div className="Site-content">
+        <p className="home-intro">
+          {homeText.landingPage.welcome}
+          <br />
+        </p>
+        <p className="home-intro">{homeText.landingPage.intro}</p>
+        <br />
+        <p className="home-intro">
+          <a className="home-signup" href="/signup">
+            {homeText.landingPage.register}
+          </a>
+        </p>
+      </div>
+      <footer className="Site-footer">
+        <FooterSection />
+      </footer>
+    </div>
+  );
 }
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
 
-export default Home;
+export default connect(mapStateToProps)(Home);

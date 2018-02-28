@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
+import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 import { loadAuthToken } from "./local-storage";
 import authReducer from "./reducers/auth";
@@ -12,7 +13,7 @@ const store = createStore(
     auth: authReducer,
     protectedData: protectedDataReducer
   }),
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, createLogger())
 );
 
 // Hydrate the authToken from localStorage if it exist
