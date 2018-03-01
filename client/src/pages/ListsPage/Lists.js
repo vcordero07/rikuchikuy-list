@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import NavBarSection from "../../components/layout/NavBar/NavBar";
 import FooterSection from "../../components/layout/Footer/Footer";
-import "./List.css";
+import "./Lists.css";
 
-class List extends Component {
+class Lists extends Component {
   render() {
     return (
       <div className="Site">
@@ -19,4 +19,4 @@ class List extends Component {
   }
 }
 
-export default List;
+export default Lists;

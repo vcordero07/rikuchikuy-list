@@ -68,14 +68,20 @@
 
 .signin form button {
   font-weight: 300;
-  background-color: #3498db;
+  background-color: #e74c3c;
   margin-top: 30px;
 }
 
-.btn-primary {
+.signin .btn-primary {
   color: #fff;
-  background-color: #3498db;
-  border-color: #34495e;
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.signin .btn-primary:hover {
+  color: #fff;
+  background-color: #c0392b;
+  border-color: #c0392b;
 }
 
 .signin .signin-title {
@@ -89,7 +95,7 @@
 }
 
 .signin .signup-link a {
-  color: #3498db;
+  color: #e74c3c;
   text-decoration: none;
 }
 
@@ -100,7 +106,7 @@
 }
 
 .copyright a {
-  color: #3498db;
+  color: #e74c3c;
   text-decoration: none;
 }
 

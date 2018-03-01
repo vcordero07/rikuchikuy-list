@@ -18,20 +18,32 @@ export function Home(props) {
     <div className="home Site">
       <NavBarSection />
       <div className="Site-content">
-        <div className="home-intro home-img ">
-          <p>
-            {homeText.landingPage.welcome}
-            <br />
-          </p>
-          <p>{homeText.landingPage.intro}</p>
-          <br />
-          <button className="home-btn">
+        <br />
+        <h1 className="home-title">{homeText.homePage.title}</h1>
+
+        <div className="sub-title">
+          <h5>{homeText.homePage.subHeader}</h5>
+        </div>
+
+        <div className="center">
+          <button className="home-btn ">
             <a className="home-signup" href="/signup">
-              {homeText.landingPage.register}
+              {homeText.homePage.register}
             </a>
           </button>
         </div>
+
+        <br />
+        <div className="home-intro home-img ">
+          <p>
+            {homeText.homePage.welcome}
+            <br />
+          </p>
+          <p>{homeText.homePage.intro}</p>
+          <br />
+        </div>
       </div>
+
       <footer className="Site-footer">
         <FooterSection />
       </footer>

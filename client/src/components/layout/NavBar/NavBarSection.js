@@ -7,7 +7,7 @@ export default class NavBarSection extends Component {
   state = {
     navLinks: [
       { title: "Sign in", href: "/signin" },
-      { title: "List", href: "/list" },
+      { title: "List", href: "/lists" },
       { title: "Settings", href: "#" }
     ]
   };

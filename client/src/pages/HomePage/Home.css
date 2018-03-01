@@ -1,8 +1,8 @@
-body.home {}
+body.home {
+}
 
 .home-logo {
   animation: Home-logo-spin infinite 20s linear;
-  /* height: 80px; */
 }
 
 .home-header {
@@ -34,37 +34,53 @@ body.home {}
   opacity: 0.9;
 }
 
-.home-container {}
+.home-title {
+  color: #e74c3c;
+  text-align: center;
+  font-size: 4.2rem;
+}
 
-/* .home-signup {
-  color: #247bc6 !important;
-} */
+.sub-title h5 {
+  text-align: center;
+  font-size: 25px;
+  line-height: 110%;
+  margin: 0.82rem 0 0.656rem 0;
+}
+
+.center {
+  text-align: center;
+}
 
 .home-btn {
-  background-color: #fff;
-  color: #e74c3c;
-  margin: 3%;
-  display: inline-block;
-  padding: 12px 15px;
-  border: none;
-  font-size: 16px;
-  font-weight: 700;
+  background-color: #e74c3c;
+  color: #fff;
   border-radius: 5px;
-  outline: none;
+  margin: 3%;
+  padding: 15px;
+  width: 150px;
+  padding: 0 2rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .home-btn:hover {
-  color: #e74c3c;
-  background-color: #fff;
 }
 
 .home-btn a {
   text-decoration: none;
-  color: #e74c3c;
+  height: 54px;
+  line-height: 54px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  user-select: none;
+  vertical-align: middle;
+  z-index: 1;
+  transition: 0.3s ease-out;
+  color: #fff;
 }
 
 .home-btn a:hover {
   text-decoration: none;
-  color: #e74c3c;
-  background-color: #fff;
 }
