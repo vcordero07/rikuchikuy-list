@@ -34,7 +34,7 @@ export function Home(props) {
         </div>
 
         <br />
-        <div className="home-intro home-img ">
+        <div className="home-intro home-img home-pad">
           <p>
             {homeText.homePage.welcome}
             <br />

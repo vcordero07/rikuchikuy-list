@@ -28,9 +28,15 @@ body {
 }
 
 .Site-content::after {
-  content: '\00a0';
+  content: "\00a0";
   display: block;
   margin-top: 2em;
   height: 0px;
   visibility: hidden;
 }
+
+/* @media screen and (min-width: 970px) {
+  body {
+    width: 750px;
+  }
+} */

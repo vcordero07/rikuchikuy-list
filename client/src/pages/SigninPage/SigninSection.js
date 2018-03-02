@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getList } from "../../actions/lists";
 import { login } from "../../actions/auth";
 import signinLogo from "../../assets/img/inca5.png";
 
@@ -22,7 +23,11 @@ class SigninSection extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    return this.props.dispatch(login(user.username, user.password));
+    return this.props
+      .dispatch(login(user.username, user.password))
+      .then(async () => {
+        await this.props.dispatch(getList());
+      });
   };
 
   render() {

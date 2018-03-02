@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Route, withRouter } from "react-router-dom";
 import Signin from "./pages/SigninPage/Signin";
 import Signup from "./pages/SignupPage/Signup";
-import Lists from "./pages/ListsPage/Lists";
+import List from "./pages/ListsPage/Lists";
 import Home from "./pages/HomePage/Home";
 import { refreshAuthToken } from "./actions/auth";
 
@@ -46,7 +46,7 @@ export class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/signin/" component={Signin} />
           <Route exact path="/signup/" component={Signup} />
-          <Route exact path="/lists/" component={Lists} />
+          <Route exact path="/list/" component={List} />
         </main>
       </div>
     );

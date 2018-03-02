@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/users";
+import { addList } from "../../actions/lists";
 import { login } from "../../actions/auth";
 import signupLogo from "../../assets/img/inca5.png";
 import "./Signup.css";
@@ -25,9 +26,10 @@ class SignupSection extends Component {
       password: this.state.password,
       email: this.state.email
     };
-    return this.props
-      .dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(user.username, user.password)));
+    return this.props.dispatch(registerUser(user)).then(async () => {
+      await this.props.dispatch(login(user.username, user.password));
+      this.props.dispatch(addList(`${user.username} wish list`));
+    });
   };
 
   render() {

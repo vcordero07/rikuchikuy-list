@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import NavItems from "./NavItems";
 import "./NavBar.css";
 import navBarLogo from "../../../assets/img/inca7.png";
+import { clearAuth } from "../../../actions/auth";
+import { clearAuthToken } from "../../../local-storage";
 
 export default class NavBarSection extends Component {
   state = {
@@ -11,13 +13,26 @@ export default class NavBarSection extends Component {
       { title: "Settings", href: "#" }
     ]
   };
+
+  _logOut() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
+  }
+
   render() {
     const createLinkItem = (item, index) => {
+      let newItem = item;
+      if (index === 0 && this.props.loggedIn) {
+        newItem = {
+          title: "Log out?",
+          href: "/logout"
+        };
+      }
       return (
         <NavItems
-          key={item.title + index}
-          href={item.href}
-          title={item.title}
+          key={newItem.title + index}
+          href={newItem.href}
+          title={newItem.title}
         />
       );
     };
