@@ -16,6 +16,10 @@ const listSchema = mongoose.Schema({
     type: Date,
     required: true,
     default: Date.now
+  },
+  _user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   }
 });
 

@@ -15,6 +15,18 @@ exports.getAllList = (req, res) => {
     });
 };
 
+exports.getUserlist = (req, res) => {
+  return List.findOne({
+    _user: req.user.id
+  })
+    .populate("_items") //ask E "err: { MissingSchemaError: Schema hasn't been registered for model "Items"."
+    .exec()
+    .then(item => res.json(item.serialize()))
+    .catch(err =>
+      res.status(500).json({ message: "Internal server error: getSingleList" })
+    );
+};
+
 exports.getSingleList = (req, res) => {
   console.log("req.params:", req.params.listId);
   List.findById(req.params.listId)
@@ -33,7 +45,7 @@ exports.newList = (req, res) => {
       .status(400)
       .json({ error: "Missing title list in requrest body: newList" });
   }
-  List.create({ title: req.body.title })
+  List.create({ title: req.body.title, _user: req.user.id })
     .then(data => {
       return User.findByIdAndUpdate(req.user.id, {
         $push: { _lists: data._id }
