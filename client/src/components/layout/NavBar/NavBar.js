@@ -5,13 +5,6 @@ import "./NavBar.css";
 import NavBarSection from "./NavBarSection";
 
 export function NavBar(props) {
-  // if (props.loggedIn) {
-  //   // console.log("NavBar: you're in");
-  //   // return <Redirect to="/list" />;
-  // } else {
-  //   // console.log("NavBar: not yet");
-  // }
-
   return (
     <div className="NavBar">
       <NavBarSection loggedIn={props.loggedIn} />

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, withRouter } from "react-router-dom";
-import Signin from "./pages/SigninPage/Signin";
-import Signup from "./pages/SignupPage/Signup";
-import List from "./pages/ListsPage/Lists";
-import Home from "./pages/HomePage/Home";
+import Signin from "../pages/SigninPage/Signin";
+import Signup from "../pages/SignupPage/Signup";
+import List from "../pages/ListsPage/Lists";
+import Home from "../pages/HomePage/Home";
 
-import { refreshAuthToken } from "./actions/auth";
+import { refreshAuthToken } from "../actions/auth";
 
 import "./App.css";
 
