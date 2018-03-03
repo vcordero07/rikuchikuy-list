@@ -5,6 +5,7 @@ import Signin from "./pages/SigninPage/Signin";
 import Signup from "./pages/SignupPage/Signup";
 import List from "./pages/ListsPage/Lists";
 import Home from "./pages/HomePage/Home";
+
 import { refreshAuthToken } from "./actions/auth";
 
 import "./App.css";

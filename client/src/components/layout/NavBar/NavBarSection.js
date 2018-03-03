@@ -2,36 +2,30 @@ import React, { Component } from "react";
 import NavItems from "./NavItems";
 import "./NavBar.css";
 import navBarLogo from "../../../assets/img/inca7.png";
-import { clearAuth } from "../../../actions/auth";
-import { clearAuthToken } from "../../../local-storage";
 
 export default class NavBarSection extends Component {
   state = {
     navLinks: [
-      { title: "Sign in", href: "/signin" },
-      { title: "List", href: "/lists" },
-      { title: "Settings", href: "#" }
+      { title: "Sign in", href: "/signin", click: false },
+      { title: "List", href: "/list", click: false },
+      { title: "Settings", href: "#", click: false }
     ]
   };
-
-  _logOut() {
-    this.props.dispatch(clearAuth());
-    clearAuthToken();
-  }
-
   render() {
     const createLinkItem = (item, index) => {
       let newItem = item;
       if (index === 0 && this.props.loggedIn) {
         newItem = {
           title: "Log out?",
-          href: "/logout"
+          href: "/",
+          click: true
         };
       }
       return (
         <NavItems
           key={newItem.title + index}
           href={newItem.href}
+          click={newItem.click}
           title={newItem.title}
         />
       );
