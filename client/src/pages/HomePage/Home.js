@@ -9,11 +9,11 @@ import homeText from "../../utils/homeText";
 import "./Home.css";
 
 export function Home(props) {
-  if (props.loggedIn) {
-    console.log("you are loggedIn");
-  } else {
-    console.log("not yet");
-  }
+  // if (props.loggedIn) {
+  //   console.log("you are loggedIn");
+  // } else {
+  //   console.log("not yet");
+  // }
   return (
     <div className="home Site">
       <NavBarSection />

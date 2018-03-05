@@ -4,19 +4,21 @@ import {
   ADD_LIST_ERROR,
   GET_LIST_REQUEST,
   GET_LIST_SUCCESS,
-  GET_LIST_ERROR
-  // ADD_ITEM_REQUEST,
-  // ADD_ITEM_SUCCESS,
-  // ADD_ITEM_ERROR
+  GET_LIST_ERROR,
+  ADD_ITEM_REQUEST,
+  ADD_ITEM_SUCCESS,
+  ADD_ITEM_ERROR
 } from "../actions/lists";
 
 const initialState = {
-  id: null,
-  title: "",
+  listID: null,
+  listTitle: "",
   items: [],
   loading: false,
   itemLoading: false,
-  error: null
+  error: null,
+  itemID: null,
+  itemTitle: ""
 };
 
 export default function reducer(state = initialState, action) {
@@ -32,8 +34,8 @@ export default function reducer(state = initialState, action) {
   ) {
     return {
       ...state,
-      title: action.payload.title,
-      id: action.payload.id,
+      listTitle: action.payload.title,
+      listID: action.payload.id,
       items: [],
       loading: false,
       error: null
@@ -44,25 +46,25 @@ export default function reducer(state = initialState, action) {
       loading: false,
       error: action.error
     };
+  } else if (action.type === ADD_ITEM_REQUEST) {
+    return {
+      ...state,
+      itemLoading: true
+    };
+  } else if (action.type === ADD_ITEM_SUCCESS) {
+    return {
+      ...state,
+      itemTitle: action.payload.title,
+      itemID: action.payload.id,
+      // items: [...state.items, action.items],
+      itemLoading: false
+    };
+  } else if (action.type === ADD_ITEM_ERROR) {
+    return {
+      ...state,
+      itemLoading: false,
+      error: action.error
+    };
   }
-
-  // } else if (action.type === ADD_ITEM_REQUEST) {
-  //   return {
-  //     ...state,
-  //     itemLoading: true
-  //   };
-  // } else if (action.type === ADD_ITEM_SUCCESS) {
-  //   return {
-  //     ...state,
-  //     items: [...state.items, action.items],
-  //     itemLoading: false
-  //   };
-  // } else if (action.type === ADD_ITEM_ERROR) {
-  //   return {
-  //     ...state,
-  //     itemLoading: false,
-  //     error: action.error
-  //   };
-  // }
   return state;
 }

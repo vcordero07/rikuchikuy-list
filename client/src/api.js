@@ -10,9 +10,9 @@ class Api {
   }
 
   _fetch(method, url, body) {
-    console.log("body:", body);
+    // console.log("body:", body);
     const token = this._getUserToken();
-    console.log("token:", token);
+    // console.log("token:", token);
     let headers;
     if (token) {
       headers = {
@@ -57,8 +57,8 @@ class Api {
     return this._fetch("DELETE", `lists/${listID}`, null);
   }
 
-  _addItem(listID, item) {
-    return this._fetch("POST", `lists/${listID}/`, item);
+  _addItem(listID, title) {
+    return this._fetch("POST", `lists/${listID}/`, { title });
   }
 
   _deleteItem(listID, itemID) {
@@ -66,7 +66,7 @@ class Api {
   }
 
   _updateItem(listID, itemID, item) {
-    return this._fetch("PUT", `lists/${listID}/items/${itemID}`, item);
+    return this._fetch("PUT", `lists/${listID}/items/${itemID}`, { item });
   }
 
   _getAllItem(listID) {

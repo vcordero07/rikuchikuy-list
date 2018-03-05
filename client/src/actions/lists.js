@@ -52,6 +52,30 @@ export const getList = () => dispatch => {
     })
     .catch(error => dispatch({ type: "GET_LIST_ERROR", error }));
 };
+
+export const ADD_ITEM_REQUEST = "ADD_ITEM_REQUEST";
+export const addItemRequest = () => ({
+  type: ADD_ITEM_REQUEST
+});
+export const ADD_ITEM_SUCCESS = "ADD_ITEM_SUCCESS";
+export const addItemSuccess = item => ({
+  type: ADD_ITEM_SUCCESS,
+  item
+});
+export const ADD_ITEM_ERROR = "ADD_ITEM_ERROR";
+export const addItemError = error => ({
+  type: ADD_ITEM_ERROR,
+  error
+});
+
+export const addItem = (listID, item) => dispatch => {
+  dispatch({ type: "ADD_ITEM_REQUEST" });
+  Api._addItem(listID, item)
+    .then(payload => {
+      dispatch({ type: "ADD_ITEM_SUCCESS", payload });
+    })
+    .catch(error => dispatch({ type: "ADD_ITEM_ERROR", error }));
+};
 // export const ADD_LIST_ERROR = "GET_LIST_REQUEST";
 //
 // export const updateList = (token, listID, title) => ({

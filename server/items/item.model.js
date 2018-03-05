@@ -9,6 +9,7 @@ const itemSchema = mongoose.Schema({
   link: { type: String, default: "" },
   price: { type: Number, default: 0 },
   completed: { type: Boolean, default: false },
+  bgcolor: { type: String, default: "#fff" },
   note: { type: String, default: "" }
   // ,
   // _lists: [

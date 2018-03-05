@@ -36,6 +36,7 @@ exports.deleteItem = (req, res) => {
 };
 
 exports.newItem = (req, res) => {
+  console.log("req.body:", req.body);
   if (!req.body.title) {
     return res
       .status(400)
@@ -43,10 +44,11 @@ exports.newItem = (req, res) => {
   }
 
   Item.create({
-    title: req.body.title,
-    link: req.body.link,
-    price: req.body.price,
-    note: req.body.note
+    title: req.body.title
+    // ,
+    // link: req.body.link,
+    // price: req.body.price,
+    // note: req.body.note
   })
     .then(data => {
       // console.log("data:", data);

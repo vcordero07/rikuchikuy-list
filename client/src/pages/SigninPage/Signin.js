@@ -7,10 +7,10 @@ import SigninSection from "./SigninSection";
 
 export function Signin(props) {
   if (props.loggedIn) {
-    console.log("signin: you're in");
+    // console.log("signin: you're in");
     return <Redirect to="/list" />;
   } else {
-    console.log("singin: not yet");
+    // console.log("singin: not yet");
   }
   return (
     <div className="Signin">
