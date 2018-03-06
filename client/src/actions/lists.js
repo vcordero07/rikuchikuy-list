@@ -92,15 +92,34 @@ export const getItemError = error => ({
   error
 });
 
-export const getItem = listID => dispatch => {
+export const getItems = listID => dispatch => {
   console.log("getItem listID:", listID);
-  dispatch({ type: "ADD_ITEM_REQUEST" });
+  dispatch({ type: "GET_ITEM_REQUEST" });
   Api._getAllItem(listID)
     .then(payload => {
-      dispatch({ type: "ADD_ITEM_SUCCESS", payload });
+      dispatch({ type: "GET_ITEM_SUCCESS", payload });
     })
-    .catch(error => dispatch({ type: "ADD_ITEM_ERROR", error }));
+    .catch(error => dispatch({ type: "GET_ITEM_ERROR", error }));
 };
+
+export const getListAndItems = () => dispatch => {
+  dispatch({ type: "GET_LIST_REQUEST" });
+
+  Api._getList()
+    .then(payload => {
+      dispatch({ type: "GET_LIST_SUCCESS", payload });
+      //getItems changed listId to payload.id
+      console.log("getItem listID:", payload.id);
+      dispatch({ type: "GET_ITEM_REQUEST" });
+      Api._getAllItem(payload.id)
+        .then(payload => {
+          dispatch({ type: "GET_ITEM_SUCCESS", payload });
+        })
+        .catch(error => dispatch({ type: "GET_ITEM_ERROR", error }));
+    })
+    .catch(error => dispatch({ type: "GET_LIST_ERROR", error }));
+};
+
 // export const ADD_LIST_ERROR = "GET_LIST_REQUEST";
 //
 // export const updateList = (token, listID, title) => ({

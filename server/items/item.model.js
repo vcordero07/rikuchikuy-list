@@ -24,7 +24,8 @@ itemSchema.methods.serialize = function() {
     link: this.link,
     price: this.price,
     completed: this.completed,
-    note: this.note
+    note: this.note,
+    _list: this._list
   };
 };
 

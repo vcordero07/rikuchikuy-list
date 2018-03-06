@@ -13,25 +13,33 @@ const { List } = require("../lists/list.model");
 //   );
 
 exports.getAllItems2 = (req, res) => {
-  const listID = req.params.listId;
-  return Item.find({
-    _list: listID
-  })
-    .then(item => res.json(item.serialize()))
+  console.log("req.params: ", req.params);
+  const listId = req.params.listId;
+  console.log("listId: ", listId);
+  return Item.find({ _list: listId })
+    .populate("_list")
+    .exec()
+    .then(items => res.json(items.map(item => item.serialize())))
     .catch(err =>
       res.status(500).json({ message: "Internal server error: getAllItems2" })
     );
-
-  // try {
-  //   const listID = req.params.listId;
-  //   const list = await List.findById(listId);
-  //   const promises = list._items.map(el => Item.find(el));
-  //   await Promise.all(promises);
-  //   res.sendStatus(200).json(promises.serialize());
-  // } catch (error) {
-  //   res.status(500);
-  // }
 };
+
+// return Item.find({
+//   _list: listId
+// })
+// .populate("_list")
+// .exec()
+
+// try {
+//   const listId = req.params.listId;
+//   const list = await List.findById(listId);
+//   const promises = list._items.map(el => Item.find(el));
+//   await Promise.all(promises);
+//   res.sendStatus(200).json(promises.serialize());
+// } catch (error) {
+//   res.status(500);
+// }
 
 exports.getAllItems = (req, res) => {
   return Item.find()

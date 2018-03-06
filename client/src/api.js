@@ -72,6 +72,7 @@ class Api {
   }
 
   _getAllItem(listID) {
+    console.log("_getAllItem listID:", listID);
     return this._fetch("GET", `lists/${listID}/items`, null);
   }
 
