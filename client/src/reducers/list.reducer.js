@@ -7,7 +7,10 @@ import {
   GET_LIST_ERROR,
   ADD_ITEM_REQUEST,
   ADD_ITEM_SUCCESS,
-  ADD_ITEM_ERROR
+  ADD_ITEM_ERROR,
+  GET_ITEM_REQUEST,
+  GET_ITEM_SUCCESS,
+  GET_ITEM_ERROR
 } from "../actions/lists";
 
 const initialState = {
@@ -18,7 +21,8 @@ const initialState = {
   itemLoading: false,
   error: null,
   itemID: null,
-  itemTitle: ""
+  itemTitle: "",
+  itemNote: ""
 };
 
 export default function reducer(state = initialState, action) {
@@ -46,20 +50,27 @@ export default function reducer(state = initialState, action) {
       loading: false,
       error: action.error
     };
-  } else if (action.type === ADD_ITEM_REQUEST) {
+  } else if (
+    action.type === ADD_ITEM_REQUEST ||
+    action.type === GET_ITEM_REQUEST
+  ) {
     return {
       ...state,
       itemLoading: true
     };
-  } else if (action.type === ADD_ITEM_SUCCESS) {
+  } else if (
+    action.type === ADD_ITEM_SUCCESS ||
+    action.type === GET_ITEM_SUCCESS
+  ) {
     return {
       ...state,
       itemTitle: action.payload.title,
       itemID: action.payload.id,
-      // items: [...state.items, action.items],
+      itemNote: action.payload.note,
+      items: [...state.items, action.payload],
       itemLoading: false
     };
-  } else if (action.type === ADD_ITEM_ERROR) {
+  } else if (action.type === ADD_ITEM_ERROR || action.type === GET_ITEM_ERROR) {
     return {
       ...state,
       itemLoading: false,

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProtectedData } from "../../actions/protected-data";
-import { getList } from "../../actions/lists";
-import { addItem } from "../../actions/lists";
+import { getList, addItem, getItem } from "../../actions/lists";
+
 import requiresLogin from "../../components/requires-login";
 import NavBarSection from "../../components/layout/NavBar/NavBar";
 import FooterSection from "../../components/layout/Footer/Footer";
@@ -17,6 +17,7 @@ class Lists extends Component {
   componentDidMount() {
     this.props.dispatch(fetchProtectedData()).then(async () => {
       await this.props.dispatch(getList());
+      this.props.dispatch(getItem(this.props.list.listID));
     });
   }
   _onChange = e => {
@@ -25,14 +26,17 @@ class Lists extends Component {
     });
   };
   _onSubmit = e => {
+    let listID = this.props.list.listID;
     e.preventDefault();
     const item = {
       title: this.state.title,
-      note: this.state.note,
-      listID: this.props.list.listID
+      note: this.state.note
     };
     console.log("item:", item);
-    return this.props.dispatch(addItem(item.listID, item.title));
+    return this.props.dispatch(addItem(listID, item));
+    // .then(data => {
+    //   this.props.dispatch(getItem(listID));
+    // });
   };
 
   render() {
@@ -69,6 +73,14 @@ class Lists extends Component {
                 </button>
               </div>
             </form>
+          </div>
+          <br /> <br /> <br />
+          <div className="list-results">
+            {this.props.list.items &&
+              this.props.list.items.map(items => {
+                if (!items) return <div />;
+                return <h3 key={items._id}>{items.title}</h3>;
+              })}
           </div>
         </div>
 

@@ -2,6 +2,37 @@
 const { Item } = require("./item.model");
 const { List } = require("../lists/list.model");
 
+// return List.findOne({
+//   _user: req.user.id
+// })
+//   .populate("_items") //ask E "err: { MissingSchemaError: Schema hasn't been registered for model "Items"."
+//   .exec()
+//   .then(item => res.json(item.serialize()))
+//   .catch(err =>
+//     res.status(500).json({ message: "Internal server error: getUserList" })
+//   );
+
+exports.getAllItems2 = (req, res) => {
+  const listID = req.params.listId;
+  return Item.find({
+    _list: listID
+  })
+    .then(item => res.json(item.serialize()))
+    .catch(err =>
+      res.status(500).json({ message: "Internal server error: getAllItems2" })
+    );
+
+  // try {
+  //   const listID = req.params.listId;
+  //   const list = await List.findById(listId);
+  //   const promises = list._items.map(el => Item.find(el));
+  //   await Promise.all(promises);
+  //   res.sendStatus(200).json(promises.serialize());
+  // } catch (error) {
+  //   res.status(500);
+  // }
+};
+
 exports.getAllItems = (req, res) => {
   return Item.find()
     .then(items => res.json(items.map(item => item.serialize())))
@@ -44,11 +75,13 @@ exports.newItem = (req, res) => {
   }
 
   Item.create({
-    title: req.body.title
+    title: req.body.title,
+    note: req.body.note,
+    _list: req.params.listId
     // ,
     // link: req.body.link,
     // price: req.body.price,
-    // note: req.body.note
+    //
   })
     .then(data => {
       // console.log("data:", data);

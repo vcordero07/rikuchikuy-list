@@ -23,7 +23,7 @@ exports.getUserlist = (req, res) => {
     .exec()
     .then(item => res.json(item.serialize()))
     .catch(err =>
-      res.status(500).json({ message: "Internal server error: getSingleList" })
+      res.status(500).json({ message: "Internal server error: getUserList" })
     );
 };
 

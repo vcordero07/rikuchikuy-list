@@ -57,8 +57,10 @@ class Api {
     return this._fetch("DELETE", `lists/${listID}`, null);
   }
 
-  _addItem(listID, title) {
-    return this._fetch("POST", `lists/${listID}/`, { title });
+  _addItem(listID, item) {
+    let title = item.title;
+    let note = item.note;
+    return this._fetch("POST", `lists/${listID}/`, { title, note });
   }
 
   _deleteItem(listID, itemID) {

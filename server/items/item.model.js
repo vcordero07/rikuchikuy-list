@@ -10,14 +10,11 @@ const itemSchema = mongoose.Schema({
   price: { type: Number, default: 0 },
   completed: { type: Boolean, default: false },
   bgcolor: { type: String, default: "#fff" },
-  note: { type: String, default: "" }
-  // ,
-  // _lists: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Lists"
-  //   }
-  // ]
+  note: { type: String, default: "" },
+  _list: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "List"
+  }
 });
 
 itemSchema.methods.serialize = function() {
