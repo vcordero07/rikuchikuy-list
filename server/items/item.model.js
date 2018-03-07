@@ -14,7 +14,8 @@ const itemSchema = mongoose.Schema({
   _list: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "List"
-  }
+  },
+  created: { type: Date, required: true, default: Date.now }
 });
 
 itemSchema.methods.serialize = function() {
@@ -25,7 +26,8 @@ itemSchema.methods.serialize = function() {
     price: this.price,
     completed: this.completed,
     note: this.note,
-    _list: this._list
+    _list: this._list,
+    created: this.created
   };
 };
 

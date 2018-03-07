@@ -78,16 +78,24 @@ export default function reducer(state = initialState, action) {
     action.type === DELETE_ITEM_REQUEST
   ) {
     return { ...state, loading: true, error: null };
-  } else if (
-    action.type === UPDATE_ITEM_SUCCESS ||
-    action.type === DELETE_ITEM_SUCCESS
-  ) {
+  } else if (action.type === UPDATE_ITEM_SUCCESS) {
     return {
       ...state,
       itemTitle: action.payload.title,
       itemID: action.payload.id,
       itemNote: action.payload.note,
       items: [...state.items, action.payload],
+      itemLoading: false
+    };
+  } else if (action.type === DELETE_ITEM_SUCCESS) {
+    let filteredItems = state.items.filter(
+      item => item.id !== action.payload.id
+    );
+
+    return {
+      ...state,
+      items: filteredItems,
+      // items: [...state.items, action.payload],
       itemLoading: false
     };
   } else if (

@@ -6,7 +6,8 @@ import "./Item.css";
 class Item extends Component {
   state = {
     title: this.props.data.title,
-    note: this.props.data.note
+    note: this.props.data.note,
+    bgcolor: this.props.data.bgcolor
   };
 
   // _update = e => {
@@ -27,7 +28,10 @@ class Item extends Component {
 
   render() {
     return (
-      <div className="item-container">
+      <div
+        className="item-container"
+        style={{ backgroundColor: this.state.bgcolor }}
+      >
         <div>
           <h3>{this.state.title}</h3>
           <h5>{this.state.note}</h5>

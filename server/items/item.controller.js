@@ -13,16 +13,19 @@ const { List } = require("../lists/list.model");
 //   );
 
 exports.getAllItems2 = (req, res) => {
-  console.log("req.params: ", req.params);
+  // console.log("req.params: ", req.params);
   const listId = req.params.listId;
-  console.log("listId: ", listId);
-  return Item.find({ _list: listId })
-    .populate("_list")
-    .exec()
-    .then(items => res.json(items.map(item => item.serialize())))
-    .catch(err =>
-      res.status(500).json({ message: "Internal server error: getAllItems2" })
-    );
+  // console.log("listId: ", listId);
+  return (
+    Item.find({ _list: listId })
+      // .sort({ created: -1 })
+      .populate("_list")
+      .exec()
+      .then(items => res.json(items.map(item => item.serialize())))
+      .catch(err =>
+        res.status(500).json({ message: "Internal server error: getAllItems2" })
+      )
+  );
 };
 
 // return Item.find({
@@ -43,6 +46,7 @@ exports.getAllItems2 = (req, res) => {
 
 exports.getAllItems = (req, res) => {
   return Item.find()
+    .sort({ created: -1 })
     .then(items => res.json(items.map(item => item.serialize())))
     .catch(err =>
       res.status(500).json({ message: "Internal server error: getAllItems" })
@@ -63,11 +67,9 @@ exports.getSingleItem = (req, res) => {
 
 exports.deleteItem = (req, res) => {
   Item.findByIdAndRemove(req.params.id)
-    .then(() => {
+    .then(item => {
       console.log(`deleted item from db`);
-      res
-        .status(200)
-        .json({ message: "Successfully deleted an item from the list" });
+      res.status(201).json(item.serialize());
     })
     .catch(err =>
       res.status(500).json({ message: "Internal server error: deleteItem" })
