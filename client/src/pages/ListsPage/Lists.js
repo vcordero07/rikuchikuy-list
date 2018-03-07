@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProtectedData } from "../../actions/protected-data";
-import {
-  getList,
-  addItem,
-  getItems,
-  getListAndItems
-} from "../../actions/lists";
+import { getList, addItem, getListAndItems } from "../../actions/lists";
 
 import requiresLogin from "../../components/requires-login";
 import NavBarSection from "../../components/layout/NavBar/NavBar";
@@ -21,11 +16,19 @@ class Lists extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(fetchProtectedData()).then(() => {
-      this.props.dispatch(getList());
-      this.props.dispatch(getListAndItems()); //this is not working
-    });
+    this._fetchData();
   }
+
+  _fetchData = async () => {
+    await this.props.dispatch(fetchProtectedData());
+    await this.props.dispatch(getList());
+    await this.props.dispatch(getListAndItems());
+    // this.props.dispatch(fetchProtectedData()).then(() => {\
+    //   this.props.dispatch(getList());
+    //   this.props.dispatch(getListAndItems()); //this is not working
+    // });
+  };
+
   _onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -38,11 +41,12 @@ class Lists extends Component {
       title: this.state.title,
       note: this.state.note
     };
-    console.log("item:", item);
-    return this.props.dispatch(addItem(listID, item));
-    // .then(data => {
-    //   this.props.dispatch(getItems(listID));
-    // });
+    // console.log("item:", item);
+    this.props.dispatch(addItem(listID, item));
+    this.setState({
+      title: "",
+      note: ""
+    });
   };
 
   render() {
@@ -84,17 +88,10 @@ class Lists extends Component {
           <div className="list-results">
             {this.props.list.items &&
               this.props.list.items.map((items, i) => {
-                console.log("this.props.list.items:", this.props.list.items);
-                console.log("items:", items);
+                // console.log("this.props.list.items:", this.props.list.items);
+                // console.log("items:", items);
                 if (!items) return <div />;
-                return (
-                  <Item
-                    key={i}
-                    Obj={items}
-                    Note={items.note}
-                    Title={items.title}
-                  />
-                );
+                return <Item key={i} data={items} />;
               })}
           </div>
         </div>

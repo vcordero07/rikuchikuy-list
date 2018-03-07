@@ -93,7 +93,7 @@ export const getItemError = error => ({
 });
 
 export const getItems = listID => dispatch => {
-  console.log("getItem listID:", listID);
+  // console.log("getItem listID:", listID);
   dispatch({ type: "GET_ITEM_REQUEST" });
   Api._getAllItem(listID)
     .then(payload => {
@@ -109,7 +109,7 @@ export const getListAndItems = () => dispatch => {
     .then(payload => {
       dispatch({ type: "GET_LIST_SUCCESS", payload });
       //getItems changed listId to payload.id
-      console.log("getItem listID:", payload.id);
+      // console.log("getItem listID:", payload.id);
       dispatch({ type: "GET_ITEM_REQUEST" });
       Api._getAllItem(payload.id)
         .then(payload => {
@@ -120,72 +120,58 @@ export const getListAndItems = () => dispatch => {
     .catch(error => dispatch({ type: "GET_LIST_ERROR", error }));
 };
 
-// export const ADD_LIST_ERROR = "GET_LIST_REQUEST";
-//
-// export const updateList = (token, listID, title) => ({
-//   // return fetch(`/api/lists/${listID}/`, {
-//   //   method: "PUT",
-//   //   headers: {
-//   //     Authorization: `Bearer ${token}`,
-//   //     "Content-type": "application/json;"
-//   //   },
-//   //   body: JSON.stringify(title)
-//   // })
-//   //   .then(res => res.json())
-//   //   .then(res => {
-//   //     console.log("dispatch");
-//   //   });
-//   type: "UPDATE_LIST",
-//   id: listID,
-//   title: title
-// });
-//
-// export const getAllList = (token, userId) => ({
-//   // return fetch(`/api/lists/`, {
-//   //   method: "GET",
-//   //   headers: {
-//   //     Authorization: `Bearer ${token}`,
-//   //     "Content-type": "application/json;"
-//   //   },
-//   //   body: JSON.stringify(title)
-//   // })
-//   //   .then(res => res.json())
-//   //   .then(res => {
-//   //     console.log("dispatch");
-//   //   });
-//   type: "GET_ALL_LIST"
-// });
-//
-// export const getSingleList = (token, listID) => ({
-//   // return fetch(`/api/lists/${listID}`, {
-//   //   method: "GET",
-//   //   headers: {
-//   //     Authorization: `Bearer ${token}`,
-//   //     "Content-type": "application/json;"
-//   //   },
-//   //   body: JSON.stringify(title)
-//   // })
-//   //   .then(res => res.json())
-//   //   .then(res => {
-//   //     console.log("dispatch");
-//   //   });
-//   type: "GET_SINGLE_LIST",
-//   id: listID
-// });
-//
-// export const deleteList = (token, listID) => ({
-//   // return fetch(`/api/lists/${listID}`, {
-//   //   method: "DELETE",
-//   //   headers: {
-//   //     Authorization: `Bearer ${token}`,
-//   //     "Content-type": "application/json;"
-//   //   },
-//   //   body: JSON.stringify(title)
-//   // })
-//   //   .then(res => res.json())
-//   //   .then(res => {
-//   //     console.log("dispatch");
-//   //   });
-//   type: "DELETE_LIST",
-//   id: listID
-// });
+export const DELETE_ITEM_REQUEST = "DELETE_ITEM_REQUEST";
+export const deleteItemRequest = () => ({
+  type: DELETE_ITEM_REQUEST
+});
+
+export const DELETE_ITEM_SUCCESS = "DELETE_ITEM_SUCCESS";
+export const deleteItemSuccess = item => ({
+  type: DELETE_ITEM_SUCCESS,
+  item
+});
+
+export const DELETE_ITEM_ERROR = "DELETE_ITEM_ERROR";
+export const deleteItemError = error => ({
+  type: DELETE_ITEM_ERROR,
+  error
+});
+
+export const deleteItem = (listID, itemID) => dispatch => {
+  // console.log("deleteItem listID:", listID);
+  // console.log("deleteItem itemID:", itemID);
+  dispatch({ type: "DELETE_ITEM_REQUEST" });
+  Api._deleteItem(listID, itemID)
+    .then(payload => {
+      dispatch({ type: "DELETE_ITEM_SUCCESS", payload });
+    })
+    .catch(error => dispatch({ type: "DELETE_ITEM_ERROR", error }));
+};
+
+export const UPDATE_ITEM_REQUEST = "UPDATE_ITEM_REQUEST";
+export const updateItemRequest = () => ({
+  type: UPDATE_ITEM_REQUEST
+});
+
+export const UPDATE_ITEM_SUCCESS = "UPDATE_ITEM_SUCCESS";
+export const updateItemSuccess = item => ({
+  type: UPDATE_ITEM_SUCCESS,
+  item
+});
+
+export const UPDATE_ITEM_ERROR = "UPDATE_ITEM_ERROR";
+export const updateItemError = error => ({
+  type: UPDATE_ITEM_ERROR,
+  error
+});
+
+export const updateItem = (listID, itemID) => dispatch => {
+  // console.log("updateItem listID:", listID);
+  // console.log("updateItem itemID:", itemID);
+  dispatch({ type: "UPDATE_ITEM_REQUEST" });
+  Api._updateItem(listID, itemID)
+    .then(payload => {
+      dispatch({ type: "UPDATE_ITEM_SUCCESS", payload });
+    })
+    .catch(error => dispatch({ type: "UPDATE_ITEM_ERROR", error }));
+};

@@ -64,7 +64,7 @@ class Api {
   }
 
   _deleteItem(listID, itemID) {
-    return this._fetch("DELETE", `lists/${listID}/items/${itemID}`, null);
+    return this._fetch("DELETE", `lists/${listID}/items/${itemID}`, undefined);
   }
 
   _updateItem(listID, itemID, item) {
@@ -72,7 +72,7 @@ class Api {
   }
 
   _getAllItem(listID) {
-    console.log("_getAllItem listID:", listID);
+    // console.log("_getAllItem listID:", listID);
     return this._fetch("GET", `lists/${listID}/items`, null);
   }
 
