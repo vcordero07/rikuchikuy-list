@@ -25,6 +25,7 @@
   font-size: 21px;
   border: 0;
   text-align: left;
+  text-transform: capitalize;
 }
 
 .input-list {

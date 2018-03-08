@@ -6,15 +6,15 @@ import navBarLogo from "../../../assets/img/inca7.png";
 export default class NavBarSection extends Component {
   state = {
     navLinks: [
-      { title: "Sign in", href: "/signin", click: false },
       { title: "List", href: "/list", click: false },
-      { title: "Settings", href: "#", click: false }
+      { title: "Sign in", href: "/signin", click: false }
+      // { title: "Settings", href: "#", click: false }
     ]
   };
   render() {
     const createLinkItem = (item, index) => {
       let newItem = item;
-      if (index === 0 && this.props.loggedIn) {
+      if (index === 1 && this.props.loggedIn) {
         newItem = {
           title: "Log out?",
           href: "/",

@@ -75,10 +75,7 @@ class SigninSection extends Component {
                   onChange={this._onChange}
                 />
 
-                <button
-                  className="btn btn-lg btn-primary btn-block"
-                  type="submit"
-                >
+                <button className="signin-btn" type="submit">
                   Sign in
                 </button>
               </form>

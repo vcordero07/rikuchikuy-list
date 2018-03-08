@@ -2,16 +2,6 @@
 const { Item } = require("./item.model");
 const { List } = require("../lists/list.model");
 
-// return List.findOne({
-//   _user: req.user.id
-// })
-//   .populate("_items") //ask E "err: { MissingSchemaError: Schema hasn't been registered for model "Items"."
-//   .exec()
-//   .then(item => res.json(item.serialize()))
-//   .catch(err =>
-//     res.status(500).json({ message: "Internal server error: getUserList" })
-//   );
-
 exports.getAllItems2 = (req, res) => {
   // console.log("req.params: ", req.params);
   const listId = req.params.listId;
@@ -27,22 +17,6 @@ exports.getAllItems2 = (req, res) => {
       )
   );
 };
-
-// return Item.find({
-//   _list: listId
-// })
-// .populate("_list")
-// .exec()
-
-// try {
-//   const listId = req.params.listId;
-//   const list = await List.findById(listId);
-//   const promises = list._items.map(el => Item.find(el));
-//   await Promise.all(promises);
-//   res.sendStatus(200).json(promises.serialize());
-// } catch (error) {
-//   res.status(500);
-// }
 
 exports.getAllItems = (req, res) => {
   return Item.find()
@@ -112,6 +86,7 @@ exports.newItem = (req, res) => {
 exports.updateItem = (req, res) => {
   const upItem = {};
   const updateableFields = ["title", "completed", "link", "price", "note"];
+  console.log("updateItem req.body:", req.body);
   updateableFields.forEach(field => {
     if (field in req.body) {
       upItem[field] = req.body[field];

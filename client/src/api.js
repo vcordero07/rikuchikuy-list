@@ -68,7 +68,7 @@ class Api {
   }
 
   _updateItem(listID, itemID, item) {
-    return this._fetch("PUT", `lists/${listID}/items/${itemID}`, { item });
+    return this._fetch("PUT", `lists/${listID}/items/${itemID}`, item);
   }
 
   _getAllItem(listID) {

@@ -93,7 +93,6 @@ export const getItemError = error => ({
 });
 
 export const getItems = listID => dispatch => {
-  // console.log("getItem listID:", listID);
   dispatch({ type: "GET_ITEM_REQUEST" });
   Api._getAllItem(listID)
     .then(payload => {
@@ -108,8 +107,7 @@ export const getListAndItems = () => dispatch => {
   Api._getList()
     .then(payload => {
       dispatch({ type: "GET_LIST_SUCCESS", payload });
-      //getItems changed listId to payload.id
-      // console.log("getItem listID:", payload.id);
+
       dispatch({ type: "GET_ITEM_REQUEST" });
       Api._getAllItem(payload.id)
         .then(payload => {
@@ -138,8 +136,6 @@ export const deleteItemError = error => ({
 });
 
 export const deleteItem = (listID, itemID) => dispatch => {
-  // console.log("deleteItem listID:", listID);
-  // console.log("deleteItem itemID:", itemID);
   dispatch({ type: "DELETE_ITEM_REQUEST" });
   Api._deleteItem(listID, itemID)
     .then(payload => {
@@ -165,11 +161,9 @@ export const updateItemError = error => ({
   error
 });
 
-export const updateItem = (listID, itemID) => dispatch => {
-  // console.log("updateItem listID:", listID);
-  // console.log("updateItem itemID:", itemID);
+export const updateItem = (listID, item) => dispatch => {
   dispatch({ type: "UPDATE_ITEM_REQUEST" });
-  Api._updateItem(listID, itemID)
+  Api._updateItem(listID, item.id, item)
     .then(payload => {
       dispatch({ type: "UPDATE_ITEM_SUCCESS", payload });
     })

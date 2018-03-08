@@ -30,7 +30,7 @@ const initialState = {
   itemTitle: "",
   itemNote: ""
 };
-
+// TODO: cleanup reducer
 export default function reducer(state = initialState, action) {
   if (action.type === ADD_LIST_REQUEST || action.type === GET_LIST_REQUEST) {
     return { ...state, loading: true, error: null };
@@ -81,10 +81,15 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === UPDATE_ITEM_SUCCESS) {
     return {
       ...state,
-      itemTitle: action.payload.title,
-      itemID: action.payload.id,
-      itemNote: action.payload.note,
-      items: [...state.items, action.payload],
+      items: state.items.map(
+        el =>
+          el.id === action.payload.id
+            ? {
+                ...el,
+                ...action.payload
+              }
+            : el
+      ),
       itemLoading: false
     };
   } else if (action.type === DELETE_ITEM_SUCCESS) {
@@ -95,7 +100,7 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       items: filteredItems,
-      // items: [...state.items, action.payload],
+
       itemLoading: false
     };
   } else if (

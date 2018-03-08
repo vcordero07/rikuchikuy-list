@@ -35,8 +35,8 @@ class Lists extends Component {
     });
   };
   _onSubmit = e => {
-    let listID = this.props.list.listID;
     e.preventDefault();
+    let listID = this.props.list.listID;
     const item = {
       title: this.state.title,
       note: this.state.note
@@ -68,7 +68,7 @@ class Lists extends Component {
                 value={this.state.title}
                 onChange={this._onChange}
               />
-              <textarea
+              <input
                 type="text"
                 name="note"
                 id="list-note"
@@ -87,11 +87,11 @@ class Lists extends Component {
           <br /> <br /> <br />
           <div className="list-results">
             {this.props.list.items &&
-              this.props.list.items.map((items, i) => {
+              this.props.list.items.map((item, i) => {
                 // console.log("this.props.list.items:", this.props.list.items);
                 // console.log("items:", items);
-                if (!items) return <div />;
-                return <Item key={i} data={items} />;
+                if (!item) return <div />;
+                return <Item key={item.id} data={item} />;
               })}
           </div>
         </div>
