@@ -12,7 +12,8 @@ import "./Lists.css";
 class Lists extends Component {
   state = {
     title: "",
-    note: ""
+    note: "",
+    isHidden: false
   };
 
   componentDidMount() {
@@ -45,7 +46,14 @@ class Lists extends Component {
     this.props.dispatch(addItem(listID, item));
     this.setState({
       title: "",
-      note: ""
+      note: "",
+      isHidden: false
+    });
+  };
+
+  _toggleHiddentMode = () => {
+    this.setState({
+      isHidden: true
     });
   };
 
@@ -63,7 +71,7 @@ class Lists extends Component {
                 type="text"
                 name="title"
                 id="list-title"
-                className="input-list"
+                className="input-list required"
                 placeholder="Title"
                 value={this.state.title}
                 onChange={this._onChange}
@@ -76,6 +84,20 @@ class Lists extends Component {
                 placeholder="Note"
                 value={this.state.note}
                 onChange={this._onChange}
+              />
+              <input
+                type="text"
+                name="link"
+                id="list-link"
+                className="link-list"
+                placeholder="Link"
+              />
+              <input
+                type="number"
+                name="price"
+                id="list-price"
+                className="price-list"
+                placeholder="Price: $$"
               />
               <div className="form-list-border">
                 <button className="btn-list" type="submit">

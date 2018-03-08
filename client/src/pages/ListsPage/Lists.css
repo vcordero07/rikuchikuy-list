@@ -38,12 +38,36 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.26);
 }
 
+.input-list label:after {
+  content: " *";
+  color: #e74c3c;
+}
+
 .textarea-list {
   min-height: 64px;
   display: block;
   border: none;
   outline: none;
   width: 100%;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+}
+
+.link-list {
+  min-height: 64px;
+  display: inline-block;
+  border: none;
+  outline: none;
+  width: 50%;
+  font-size: 16px;
+}
+
+.price-list {
+  min-height: 64px;
+  display: inline-block;
+  border: none;
+  outline: none;
+  width: 50%;
   font-size: 16px;
 }
 
@@ -55,10 +79,10 @@
   border: none;
   vertical-align: middle;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 20px;
   padding: 0 26px;
   margin: 6px;
-  line-height: 36px;
+  line-height: 45px;
   float: right;
 }
 

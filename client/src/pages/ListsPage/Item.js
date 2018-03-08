@@ -7,7 +7,7 @@ class Item extends Component {
   state = {
     title: this.props.data.title,
     note: this.props.data.note,
-    bgcolor: this.props.data.bgcolor,
+    bgcolor: this.props.data.bgcolor || "#ffffff",
     isEditMode: false
   };
 
@@ -52,32 +52,42 @@ class Item extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
-      <div
-        className="items-container"
-        style={{ backgroundColor: this.state.bgcolor }}
-      >
-        <div className="item-content">
+      <div className="items-container">
+        <div
+          className="item-content"
+          style={{ backgroundColor: this.state.bgcolor }}
+        >
           <div className="item-btns">
             <button
               type="button"
-              className="btn-item"
+              className="btn-item-edit"
               onClick={this._getUpdate}
             >
               {this.state.isEditMode ? "Update" : "Edit"}
             </button>
-            <button type="button" className="btn-item" onClick={this._delete}>
-              Delete
-            </button>
+            {this.state.isEditMode ? (
+              <button type="button" className="btn-item" disabled>
+                {" "}
+                :]{" "}
+              </button>
+            ) : (
+              <button type="button" className="btn-item" onClick={this._delete}>
+                Delete
+              </button>
+            )}
           </div>
           {this.state.isEditMode ? (
             <div className="item-info">
               <input
+                className="item-title-input-edit"
                 value={this.state.title}
                 onChange={this._onChange}
                 name="title"
               />
               <input
+                className="item-note-input-edit"
                 value={this.state.note}
                 onChange={this._onChange}
                 name="note"

@@ -6,16 +6,14 @@ exports.getAllItems2 = (req, res) => {
   // console.log("req.params: ", req.params);
   const listId = req.params.listId;
   // console.log("listId: ", listId);
-  return (
-    Item.find({ _list: listId })
-      // .sort({ created: -1 })
-      .populate("_list")
-      .exec()
-      .then(items => res.json(items.map(item => item.serialize())))
-      .catch(err =>
-        res.status(500).json({ message: "Internal server error: getAllItems2" })
-      )
-  );
+  return Item.find({ _list: listId })
+    .sort({ created: -1 })
+    .populate("_list")
+    .exec()
+    .then(items => res.json(items.map(item => item.serialize())))
+    .catch(err =>
+      res.status(500).json({ message: "Internal server error: getAllItems2" })
+    );
 };
 
 exports.getAllItems = (req, res) => {
@@ -38,6 +36,23 @@ exports.getSingleItem = (req, res) => {
       res.status(500).json({ message: "Internal server error: getSingleItem" })
     );
 };
+
+// exports.deleteItem = async (req, res) => {
+//   try {
+//     const listID = req.params.listId;
+//     const itemID = req.params.id;
+//     const promises = await List.findOneAndUpdate(
+//       { _id: listID },
+//       { $pull: { _items: itemID } },
+//       { safe: true }
+//     );
+//     await Promise.all(promises);
+//     await Item.findByIdAndRemove(itemID);
+//     res.sendStatus(201).json();
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// };
 
 exports.deleteItem = (req, res) => {
   Item.findByIdAndRemove(req.params.id)
