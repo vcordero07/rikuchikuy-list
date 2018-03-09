@@ -8,6 +8,12 @@ import listReducer from "./reducers/list.reducer";
 import protectedDataReducer from "./reducers/protected-data";
 import { setAuthToken, refreshAuthToken } from "./actions/auth";
 
+const middlewares = [thunk];
+
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(createLogger());
+}
+
 const store = createStore(
   combineReducers({
     form: formReducer,
@@ -16,7 +22,7 @@ const store = createStore(
     list: listReducer
   }),
   compose(
-    applyMiddleware(thunk, createLogger()),
+    applyMiddleware(...middlewares),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
