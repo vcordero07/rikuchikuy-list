@@ -7,10 +7,10 @@ import SignupSection from "./SignupSection";
 
 export function Signup(props) {
   if (props.loggedIn) {
-    console.log("signup: yes, you are the best!");
+    // console.log("signup: yes, you are the best!");
     return <Redirect to="/list" />;
   } else {
-    console.log("signup: not yet");
+    // console.log("signup: not yet");
   }
 
   return (
