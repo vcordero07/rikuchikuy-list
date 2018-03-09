@@ -58,9 +58,7 @@ class Api {
   }
 
   _addItem(listID, item) {
-    let title = item.title;
-    let note = item.note;
-    return this._fetch("POST", `lists/${listID}/`, { title, note });
+    return this._fetch("POST", `lists/${listID}/`, item);
   }
 
   _deleteItem(listID, itemID) {
@@ -81,4 +79,4 @@ class Api {
   }
 }
 
-export default new Api("http://localhost:8080/api");
+export default new Api("https://serene-thicket-44527.herokuapp.com/api");

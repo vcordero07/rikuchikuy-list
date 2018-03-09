@@ -8,6 +8,8 @@ class Item extends Component {
     title: this.props.data.title,
     note: this.props.data.note,
     bgcolor: this.props.data.bgcolor || "#ffffff",
+    link: this.props.data.link,
+    price: this.props.data.price,
     isEditMode: false
   };
 
@@ -16,7 +18,9 @@ class Item extends Component {
     const item = {
       id: this.props.data.id,
       title: this.state.title,
-      note: this.state.note
+      note: this.state.note,
+      link: this.state.link,
+      price: this.state.price
     };
 
     this.props.dispatch(updateItem(listID, item));
@@ -92,11 +96,26 @@ class Item extends Component {
                 onChange={this._onChange}
                 name="note"
               />
+              <input
+                className="item-link-input-edit"
+                value={this.state.link}
+                onChange={this._onChange}
+                name="link"
+              />
+              <input
+                className="item-price-input-edit"
+                value={this.state.price}
+                onChange={this._onChange}
+                name="price"
+              />
             </div>
           ) : (
             <div className="item-info">
-              <h3>{this.state.title}</h3>
+              <h3>
+                <a href={this.state.link}>{this.state.title}</a>
+              </h3>
               <h5>{this.state.note}</h5>
+              <h5>{this.state.price}</h5>
             </div>
           )}
         </div>

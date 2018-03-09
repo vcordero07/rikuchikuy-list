@@ -1,1 +1,1 @@
-## Rikuchikuy List App
+## Rikuchikuy List client

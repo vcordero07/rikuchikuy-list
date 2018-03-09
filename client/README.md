@@ -1,1 +1,0 @@
-## Rikuchikuy List client

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProtectedData } from "../../actions/protected-data";
 import { getList, addItem, getListAndItems } from "../../actions/lists";
+// import GoogleUrlShortner from "react-google-url-shortner";
 
 import requiresLogin from "../../components/requires-login";
 import NavBarSection from "../../components/layout/NavBar/NavBar";
@@ -13,6 +14,8 @@ class Lists extends Component {
   state = {
     title: "",
     note: "",
+    link: "",
+    price: "",
     isHidden: false
   };
 
@@ -40,13 +43,17 @@ class Lists extends Component {
     let listID = this.props.list.listID;
     const item = {
       title: this.state.title,
-      note: this.state.note
+      note: this.state.note,
+      link: this.state.link,
+      price: this.state.price
     };
     // console.log("item:", item);
     this.props.dispatch(addItem(listID, item));
     this.setState({
       title: "",
       note: "",
+      link: "",
+      price: 0,
       isHidden: false
     });
   };
@@ -91,6 +98,8 @@ class Lists extends Component {
                 id="list-link"
                 className="link-list"
                 placeholder="Link"
+                value={this.state.link}
+                onChange={this._onChange}
               />
               <input
                 type="number"
@@ -98,6 +107,8 @@ class Lists extends Component {
                 id="list-price"
                 className="price-list"
                 placeholder="Price: $$"
+                value={this.state.price}
+                onChange={this._onChange}
               />
               <div className="form-list-border">
                 <button className="btn-list" type="submit">
