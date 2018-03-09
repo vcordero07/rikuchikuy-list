@@ -35,8 +35,21 @@ body {
   visibility: hidden;
 }
 
-/* @media screen and (min-width: 970px) {
-  body {
-    width: 750px;
+@media screen and (min-width: 970px) {
+  .navbar {
+    padding-left: 15%;
+    padding-right: 15%
   }
-} */
+  .Site-content,
+  .list {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
+
+@media screen and (max-width: 969px) {
+  .Site-content,
+  .list {
+    padding: 15px;
+  }
+}
