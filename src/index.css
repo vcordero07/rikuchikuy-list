@@ -40,7 +40,7 @@ body {
     padding-left: 15%;
     padding-right: 15%
   }
-  .Site-content,
+  .home-intro,
   .list {
     padding-left: 15%;
     padding-right: 15%;
@@ -48,7 +48,6 @@ body {
 }
 
 @media screen and (max-width: 969px) {
-  .Site-content,
   .list {
     padding: 15px;
   }

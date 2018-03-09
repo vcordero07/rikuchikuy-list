@@ -7,6 +7,7 @@ import { getList, addItem, getListAndItems } from "../../actions/lists";
 import requiresLogin from "../../components/requires-login";
 import NavBarSection from "../../components/layout/NavBar/NavBar";
 import FooterSection from "../../components/layout/Footer/Footer";
+// import Modal from "../../modal";
 import Item from "./Item";
 import "./Lists.css";
 
@@ -16,7 +17,7 @@ class Lists extends Component {
     note: "",
     link: "",
     price: "",
-    isHidden: false
+    errorMsg: ""
   };
 
   componentDidMount() {
@@ -38,30 +39,37 @@ class Lists extends Component {
       [e.target.name]: e.target.value
     });
   };
+
+  // _toggleModalMode = () => {
+  //   this.setState({
+  //     isModalOpen: true
+  //   });
+  // };
+
   _onSubmit = e => {
     e.preventDefault();
-    let listID = this.props.list.listID;
-    const item = {
-      title: this.state.title,
-      note: this.state.note,
-      link: this.state.link,
-      price: this.state.price
-    };
-    // console.log("item:", item);
-    this.props.dispatch(addItem(listID, item));
-    this.setState({
-      title: "",
-      note: "",
-      link: "",
-      price: 0,
-      isHidden: false
-    });
-  };
-
-  _toggleHiddentMode = () => {
-    this.setState({
-      isHidden: true
-    });
+    if (this.state.title === "") {
+      this.setState({
+        errorMsg: "Please enter a title"
+      });
+    } else {
+      let listID = this.props.list.listID;
+      const item = {
+        title: this.state.title,
+        note: this.state.note,
+        link: this.state.link,
+        price: this.state.price
+      };
+      // console.log("item:", item);
+      this.props.dispatch(addItem(listID, item));
+      this.setState({
+        title: "",
+        note: "",
+        link: "",
+        price: 0,
+        errorMsg: ""
+      });
+    }
   };
 
   render() {
