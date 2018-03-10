@@ -59,7 +59,7 @@ export default function reducer(state = initialState, action) {
       itemTitle: action.payload.title,
       itemID: action.payload.id,
       itemNote: action.payload.note,
-      items: [...state.items, action.payload],
+      items: [action.payload, ...state.items],
       itemLoading: false
     };
   } else if (action.type === GET_ITEM_SUCCESS) {
