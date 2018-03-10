@@ -53,7 +53,7 @@ class SigninSection extends Component {
                   type="text"
                   name="username"
                   id="username"
-                  className="form-username-input"
+                  className="signin-username-input"
                   placeholder="Username"
                   value={this.state.username}
                   onChange={this._onChange}
@@ -69,7 +69,7 @@ class SigninSection extends Component {
                   type="password"
                   name="password"
                   id="password"
-                  className="form-password-input"
+                  className="signin-password-input"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this._onChange}

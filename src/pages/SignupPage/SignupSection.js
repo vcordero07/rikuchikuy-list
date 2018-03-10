@@ -4,7 +4,7 @@ import { registerUser } from "../../actions/users";
 import { addList } from "../../actions/lists";
 import { login } from "../../actions/auth";
 import signupLogo from "../../assets/img/inca5.png";
-import "./Signup.css";
+// import "./Signup.css";
 
 class SignupSection extends Component {
   state = {
@@ -55,7 +55,7 @@ class SignupSection extends Component {
                   type="text"
                   name="username"
                   id="username"
-                  className="form-control"
+                  className="signup-username-input"
                   placeholder="Username"
                   value={this.state.username}
                   onChange={this._onChange}
@@ -71,7 +71,7 @@ class SignupSection extends Component {
                   type="text"
                   name="email"
                   id="email"
-                  className="form-control"
+                  className="signup-email-input"
                   placeholder="Email"
                   value={this.state.email}
                   onChange={this._onChange}
@@ -87,7 +87,7 @@ class SignupSection extends Component {
                   type="password"
                   name="password"
                   id="password"
-                  className="form-control"
+                  className="signup-password-input"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this._onChange}

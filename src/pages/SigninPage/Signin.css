@@ -23,29 +23,8 @@ img.form-logo {
   height: 85px;
 }
 
-/* .signin form input {
-  border-radius: 0px;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  padding: 30px 10px;
-  text-indent: 40px;
-  color: #777;
-  box-shadow: none;
-} */
-
-.form-username-input {
-  border-radius: 0px;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  padding: 30px 10px;
-  text-indent: 40px;
-  color: #777;
-  box-shadow: none;
-  width: 100%;
-  display: block;
-}
-
-.form-password-input {
+.signin-username-input,
+.signin-password-input {
   border-radius: 0px;
   border: 1px solid #ddd;
   border-bottom: none;
@@ -101,18 +80,6 @@ span.fa.fa-lock {
   padding: 10px 16px;
   line-height: 25px;
   width: 100%;
-}
-
-.signin .btn-primary {
-  color: #fff;
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-}
-
-.signin .btn-primary:hover {
-  color: #fff;
-  background-color: #c0392b;
-  border-color: #c0392b;
 }
 
 .signin .signin-title {

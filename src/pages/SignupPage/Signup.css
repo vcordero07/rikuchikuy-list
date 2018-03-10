@@ -13,18 +13,19 @@
 .signup form {
   width: 100%;
   position: relative;
-  /* margin: 35px 60px 5px; */
   text-align: center !important;
 }
 
-.signup .form-logo {
+img.form-logo {
   margin-bottom: 1.5rem !important;
   border-style: none;
   width: 85px;
   height: 85px;
 }
 
-.signup form input {
+.signup-username-input,
+.signup-password-input,
+.signup-email-input {
   border-radius: 0px;
   border: 1px solid #ddd;
   border-bottom: none;
@@ -32,6 +33,8 @@
   text-indent: 40px;
   color: #777;
   box-shadow: none;
+  width: 100%;
+  display: block;
 }
 
 .signup form input:focus {
@@ -54,35 +57,23 @@
   left: 15px;
 }
 
-.signup form .fa.fa-user {
-  top: 175px;
+span.fa.fa-user {
+  top: 185px;
   font-size: 30px;
   color: #ddd;
 }
 
-.signup .signup-col form .fa.fa-envelope {
-  top: 240px;
+span.fa.fa-envelope {
+  top: 270px;
   font-size: 25px;
   color: #ddd;
 }
 
-.signup form .fa.fa-lock {
-  top: 295px;
+span.fa.fa-lock {
+  top: 345px;
   font-size: 35px;
   color: #ddd;
 }
-
-/* .signup form button {
-  font-weight: 300;
-  background-color: #3498db;
-  margin-top: 15px;
-} */
-
-/* .btn-primary {
-  color: #fff;
-  background-color: #3498db;
-  border-color: #34495e;
-} */
 
 .signup-btn {
   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -103,13 +94,13 @@
   margin-bottom: 15px !important;
 }
 
-.signup .signin-link {
+div.signin-link {
   margin-top: 30px;
   text-align: center;
 }
 
-.signup .signin-link a {
-  color: #3498db;
+div.signin-link a {
+  color: #e74c3c;
   text-decoration: none;
 }
 
@@ -119,8 +110,8 @@
   text-align: center;
 }
 
-.copyright a {
-  color: #3498db;
+div.copyright a {
+  color: #e74c3c;
   text-decoration: none;
 }
 
