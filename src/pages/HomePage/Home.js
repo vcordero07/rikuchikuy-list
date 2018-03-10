@@ -36,12 +36,9 @@ export function Home(props) {
 
         <br />
         <div className="home-intro home-img home-pad">
-          <p>
-            {homeText.homePage.welcome}
-            <br />
-          </p>
+          <p>{homeText.homePage.welcome}</p>
           <p>{homeText.homePage.intro}</p>
-          <br />
+          <p>{homeText.homePage.purpose}</p>
         </div>
       </div>
 
