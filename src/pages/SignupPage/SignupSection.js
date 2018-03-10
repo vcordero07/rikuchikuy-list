@@ -103,6 +103,7 @@ class SignupSection extends Component {
                   Have an account? <a href="/signin">Sign In</a>
                 </div>
               </div>
+
               <div className="copyright">
                 <span className="fa fa-copyright">
                   {" "}

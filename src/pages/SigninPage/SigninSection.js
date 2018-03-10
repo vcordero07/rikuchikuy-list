@@ -85,6 +85,14 @@ class SigninSection extends Component {
                   New? <a href="/signup"> Create an account</a>
                 </div>
               </div>
+
+              <div className="demo-container">
+                <div className="demo">
+                  <h5>Username: demo</h5>
+                  <h5>Password: demodemo11</h5>
+                </div>
+              </div>
+
               <div className="copyright">
                 <span className="fa fa-copyright">
                   {" "}
