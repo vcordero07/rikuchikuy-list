@@ -66,7 +66,7 @@ class Lists extends Component {
         title: "",
         note: "",
         link: "",
-        price: 0,
+        price: "",
         errorMsg: ""
       });
     }
