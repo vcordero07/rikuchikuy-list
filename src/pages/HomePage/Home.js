@@ -30,12 +30,6 @@ export function Home(props) {
           <Link className="home-btn home-signup" to="/signup">
             {homeText.homePage.register}
           </Link>
-
-          <button className="home-btn ">
-            <a className="home-signup" href="/signup">
-              {homeText.homePage.register}
-            </a>
-          </button>
         </div>
 
         <br />
