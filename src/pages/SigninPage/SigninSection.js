@@ -4,7 +4,7 @@ import { getList } from "../../actions/lists";
 import { login } from "../../actions/auth";
 import signinLogo from "../../assets/img/inca5.png";
 
-import "./Signin.css";
+// import "./Signins.css";
 
 class SigninSection extends Component {
   state = {
@@ -53,7 +53,7 @@ class SigninSection extends Component {
                   type="text"
                   name="username"
                   id="username"
-                  className="form-control"
+                  className="form-username-input"
                   placeholder="Username"
                   value={this.state.username}
                   onChange={this._onChange}
@@ -69,7 +69,7 @@ class SigninSection extends Component {
                   type="password"
                   name="password"
                   id="password"
-                  className="form-control"
+                  className="form-password-input"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this._onChange}

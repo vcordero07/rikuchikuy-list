@@ -13,18 +13,17 @@
 .signin form {
   width: 100%;
   position: relative;
-  /* margin: 35px 60px 5px; */
   text-align: center !important;
 }
 
-.signin .form-logo {
+img.form-logo {
   margin-bottom: 1.5rem !important;
   border-style: none;
   width: 85px;
   height: 85px;
 }
 
-.signin form input {
+/* .signin form input {
   border-radius: 0px;
   border: 1px solid #ddd;
   border-bottom: none;
@@ -32,6 +31,30 @@
   text-indent: 40px;
   color: #777;
   box-shadow: none;
+} */
+
+.form-username-input {
+  border-radius: 0px;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  padding: 30px 10px;
+  text-indent: 40px;
+  color: #777;
+  box-shadow: none;
+  width: 100%;
+  display: block;
+}
+
+.form-password-input {
+  border-radius: 0px;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  padding: 30px 10px;
+  text-indent: 40px;
+  color: #777;
+  box-shadow: none;
+  width: 100%;
+  display: block;
 }
 
 .signin form input:focus {
@@ -54,22 +77,16 @@
   left: 15px;
 }
 
-.signin form .fa.fa-user {
-  top: 175px;
+span.fa.fa-user {
+  top: 185px;
   font-size: 30px;
   color: #ddd;
 }
 
-.signin form .fa.fa-lock {
-  top: 235px;
+span.fa.fa-lock {
+  top: 265px;
   font-size: 35px;
   color: #ddd;
-}
-
-.signin form button {
-  /* font-weight: 300;
-  background-color: #e74c3c;
-  margin-top: 15px; */
 }
 
 .signin-btn {
@@ -83,32 +100,32 @@
   font-size: 18px;
   padding: 10px 16px;
   line-height: 25px;
-  width: 100%
+  width: 100%;
 }
 
-/* .signin .btn-primary {
+.signin .btn-primary {
   color: #fff;
   background-color: #e74c3c;
   border-color: #e74c3c;
-} */
+}
 
-/* .signin .btn-primary:hover {
+.signin .btn-primary:hover {
   color: #fff;
   background-color: #c0392b;
   border-color: #c0392b;
-} */
+}
 
 .signin .signin-title {
   text-align: center;
   margin-bottom: 15px !important;
 }
 
-.signin .signup-link {
+div.signup-link {
   margin-top: 30px;
   text-align: center;
 }
 
-.signin .signup-link a {
+div.signup-link a {
   color: #e74c3c;
   text-decoration: none;
 }
@@ -119,7 +136,7 @@
   text-align: center;
 }
 
-.copyright a {
+div.copyright a {
   color: #e74c3c;
   text-decoration: none;
 }
