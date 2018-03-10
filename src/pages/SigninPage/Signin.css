@@ -56,13 +56,13 @@ img.form-logo {
   left: 15px;
 }
 
-span.fa.fa-user {
+.signin span.fa.fa-user {
   top: 185px;
   font-size: 30px;
   color: #ddd;
 }
 
-span.fa.fa-lock {
+.signin span.fa.fa-lock {
   top: 265px;
   font-size: 35px;
   color: #ddd;

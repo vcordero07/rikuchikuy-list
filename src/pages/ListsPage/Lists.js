@@ -115,6 +115,7 @@ class Lists extends Component {
                 id="list-price"
                 className="price-list"
                 placeholder="Price: $$"
+                step=".01"
                 value={this.state.price}
                 onChange={this._onChange}
               />

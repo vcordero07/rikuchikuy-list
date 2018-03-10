@@ -57,19 +57,19 @@ img.form-logo {
   left: 15px;
 }
 
-span.fa.fa-user {
+.signup span.fa.fa-user {
   top: 185px;
   font-size: 30px;
   color: #ddd;
 }
 
-span.fa.fa-envelope {
+.signup span.fa.fa-envelope {
   top: 270px;
   font-size: 25px;
   color: #ddd;
 }
 
-span.fa.fa-lock {
+.signup span.fa.fa-lock {
   top: 345px;
   font-size: 35px;
   color: #ddd;
