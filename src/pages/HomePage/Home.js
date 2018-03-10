@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import NavBarSection from "../../components/layout/NavBar/NavBar";
 import FooterSection from "../../components/layout/Footer/Footer";
@@ -28,9 +28,9 @@ export function Home(props) {
 
         <div className="center">
           <button className="home-btn ">
-            <Link className="home-signup" to="/signup">
+            <a className="home-signup" href="/signup">
               {homeText.homePage.register}
-            </Link>
+            </a>
           </button>
         </div>
 
