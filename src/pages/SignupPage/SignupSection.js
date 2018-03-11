@@ -108,8 +108,12 @@ class SignupSection extends Component {
                 <span className="fa fa-copyright">
                   {" "}
                   2018 Rikuchikuy-List by{" "}
-                  <a href="https://github.com/vcordero07/rikuchikuy-list">
-                    Virgilio
+                  <a
+                    href="https://github.com/vcordero07/rikuchikuy-list"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Virgilio Cordero
                   </a>
                 </span>
               </div>

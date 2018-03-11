@@ -22,7 +22,7 @@
 .footer a:focus,
 .footer a:hover {
   color: #fff;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .footer-credits {
@@ -33,4 +33,9 @@
 .footer-credit {
   display: block;
   margin: 0;
+}
+
+span.fa-github-square {
+  vertical-align: middle;
+  margin-left: 5px;
 }

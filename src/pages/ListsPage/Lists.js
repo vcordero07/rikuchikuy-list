@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProtectedData } from "../../actions/protected-data";
 import { getList, addItem, getListAndItems } from "../../actions/lists";
+import Spinner from "../../components/layout/Spinner/Spinner";
 // import GoogleUrlShortner from "react-google-url-shortner";
 
 import requiresLogin from "../../components/requires-login";
@@ -17,11 +18,15 @@ class Lists extends Component {
     note: "",
     link: "",
     price: "",
-    errorMsg: ""
+    errorMsg: "",
+    isLoading: false
   };
 
   componentDidMount() {
-    this._fetchData();
+    this._toggleIsLoading();
+    setTimeout(() => {
+      this._fetchData();
+    }, 1000);
   }
 
   _fetchData = async () => {
@@ -32,6 +37,9 @@ class Lists extends Component {
     //   this.props.dispatch(getList());
     //   this.props.dispatch(getListAndItems()); //this is not working
     // });
+    this.setState({
+      isLoading: false
+    });
   };
 
   _onChange = e => {
@@ -40,11 +48,11 @@ class Lists extends Component {
     });
   };
 
-  // _toggleModalMode = () => {
-  //   this.setState({
-  //     isModalOpen: true
-  //   });
-  // };
+  _toggleIsLoading = () => {
+    this.setState({
+      isLoading: true
+    });
+  };
 
   _onSubmit = e => {
     e.preventDefault();
@@ -67,12 +75,16 @@ class Lists extends Component {
         note: "",
         link: "",
         price: "",
-        errorMsg: ""
+        errorMsg: "",
+        isLoading: false
       });
     }
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <Spinner />;
+    }
     return (
       <div className="Site">
         <NavBarSection />

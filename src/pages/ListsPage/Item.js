@@ -112,7 +112,13 @@ class Item extends Component {
           ) : (
             <div className="item-info">
               <h3>
-                <a href={this.state.link}>{this.state.title}</a>
+                <a
+                  href={this.state.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {this.state.title}
+                </a>
               </h3>
               <h5>{this.state.note}</h5>
               <h5>{this.state.price}</h5>

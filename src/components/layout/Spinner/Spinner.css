@@ -1,0 +1,14 @@
+.spinner {
+  margin-top: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.spinner img {
+  width: 100%;
+  position: relative;
+  text-align: center !important;
+}
