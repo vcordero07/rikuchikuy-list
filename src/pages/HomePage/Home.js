@@ -45,34 +45,34 @@ export function Home(props) {
               <span className="fa fa-lightbulb-o fa-3x" />
               <h5>Have an idea? </h5>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec
-                sollicitudin dui, at ultrices augue. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. In venenatis vel metus eget
-                laoreet. Nam convallis mauris in placerat tempus.
+                Not a problem, add it to your list. Keep your wish list with you
+                at all times. Now you can organize and store your ideas in one
+                place. You can access your list from your mobile phone or in a
+                browser by going to "rikuchikuy-list.xyz".
               </p>
             </div>
           </div>
           <div className="col-sm-4  col-md-4">
             <div className="block">
-              <span className="fa fa-pencil fa-3x" />
-              <h5> blah blah</h5>
+              <span className="fa fa-gift fa-3x" />
+              <h5>It is your birthday.</h5>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec
-                sollicitudin dui, at ultrices augue. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. In venenatis vel metus eget
-                laoreet. Nam convallis mauris in placerat tempus.
+                See something you want for your birthday? Add to your wish list.
+                Thinking ahead for holiday gifts? Add those to your wish list as
+                well! It’s never been easier to have all your *wishes* in one
+                place.
               </p>
             </div>
           </div>
           <div className="col-sm-4 col-md-4">
             <div className="block">
               <span className="fa fa-share fa-3x" />
-              <h5>Dont forget to share </h5>
+              <h5>Don’t forget to share </h5>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec
-                sollicitudin dui, at ultrices augue. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. In venenatis vel metus eget
-                laoreet. Nam convallis mauris in placerat tempus.
+                Sharing is caring! Don’t forget to share your list with your
+                loves one. Like this app? recommend it to your friends. By
+                creating an account, you can add unlimited items to your list.
+                Remember it’s free!
               </p>
             </div>
           </div>

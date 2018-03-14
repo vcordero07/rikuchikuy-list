@@ -109,6 +109,7 @@ body.home {}
   /* color: #fff; */
 }
 
+/*
 .row .col {
   float: left;
   box-sizing: border-box;
@@ -121,7 +122,7 @@ body.home {}
   margin-left: auto;
   left: auto;
   right: auto;
-}
+} */
 
 .block {
   padding: 0 15px;
@@ -140,8 +141,8 @@ body.home {}
   color: #e74c3c;
 }
 
-.fa-pencil:before {
-  content: "\f040";
+.fa-gift:before {
+  content: "\f06b";
   color: #e74c3c;
 }
 
