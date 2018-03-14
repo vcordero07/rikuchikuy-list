@@ -32,6 +32,8 @@ class Item extends Component {
   _delete = e => {
     let listID = this.props.data._list._id;
     let itemID = this.props.data.id;
+    console.log("listID:", listID);
+    console.log("itemID:", itemID);
     this.props.dispatch(deleteItem(listID, itemID));
   };
 

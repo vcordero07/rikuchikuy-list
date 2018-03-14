@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import NavBarSection from "../../components/layout/NavBar/NavBar";
 import FooterSection from "../../components/layout/Footer/Footer";
-// import OverlaySection from "../../components/layout/Overlay/Overlay";
+
 import homeText from "../../utils/homeText";
 
 import "./Home.css";
@@ -37,6 +37,45 @@ export function Home(props) {
           <p>{homeText.homePage.welcome}</p>
           <p>{homeText.homePage.intro}</p>
           <p>{homeText.homePage.purpose}</p>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-4 col-md-4">
+            <div className="block">
+              <span className="fa fa-lightbulb-o fa-3x" />
+              <h5>Have an idea? </h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec
+                sollicitudin dui, at ultrices augue. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. In venenatis vel metus eget
+                laoreet. Nam convallis mauris in placerat tempus.
+              </p>
+            </div>
+          </div>
+          <div className="col-sm-4  col-md-4">
+            <div className="block">
+              <span className="fa fa-pencil fa-3x" />
+              <h5> blah blah</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec
+                sollicitudin dui, at ultrices augue. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. In venenatis vel metus eget
+                laoreet. Nam convallis mauris in placerat tempus.
+              </p>
+            </div>
+          </div>
+          <div className="col-sm-4 col-md-4">
+            <div className="block">
+              <span className="fa fa-share fa-3x" />
+              <h5>Dont forget to share </h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec
+                sollicitudin dui, at ultrices augue. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. In venenatis vel metus eget
+                laoreet. Nam convallis mauris in placerat tempus.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 

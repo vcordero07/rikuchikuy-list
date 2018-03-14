@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Spinner from "../components/layout/Spinner/Spinner";
 
 import "./App.css";
 
@@ -8,6 +9,7 @@ export default () => Component => {
   function RequiresLogin(props) {
     const { authenticating, loggedIn, error, ...passThroughProps } = props;
     if (authenticating) {
+      return <Spinner />;
     } else if (!loggedIn || error) {
       return <Redirect to="/" />;
     }
