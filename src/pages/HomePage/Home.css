@@ -151,11 +151,8 @@ body.home {}
   color: #e74c3c;
 }
 
-@media only screen and (min-width: 601px) {
-  /* .row .col.m4 {
-    width: 33.3333333333%;
-    margin-left: auto;
-    left: auto;
-    right: auto;
-  } */
+div.row {
+  width: 100%;
 }
+
+@media only screen and (min-width: 601px) {}
