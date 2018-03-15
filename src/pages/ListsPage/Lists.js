@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProtectedData } from "../../actions/protected-data";
-import { getList, addItem, getListAndItems } from "../../actions/lists";
+import { getList } from "../../actions/lists";
+import { addItem, getListAndItems } from "../../actions/items";
 import Spinner from "../../components/layout/Spinner/Spinner";
-// import GoogleUrlShortner from "react-google-url-shortner";
+import Gravatar from "react-gravatar";
 
 import requiresLogin from "../../components/requires-login";
 import NavBarSection from "../../components/layout/NavBar/NavBar";
@@ -33,12 +34,10 @@ class Lists extends Component {
     await this.props.dispatch(fetchProtectedData());
     await this.props.dispatch(getList());
     await this.props.dispatch(getListAndItems());
-    // this.props.dispatch(fetchProtectedData()).then(() => {\
-    //   this.props.dispatch(getList());
-    //   this.props.dispatch(getListAndItems()); //this is not working
-    // });
+
     this.setState({
-      isLoading: false
+      isLoading: false,
+      user: this.props.user
     });
   };
 
@@ -82,9 +81,12 @@ class Lists extends Component {
   };
 
   render() {
+    // console.log(this.props);
+    // console.log("this.props.user.email:", this.props.user.email);
     if (this.state.isLoading) {
       return <Spinner />;
     }
+
     return (
       <div className="Site">
         <NavBarSection />
@@ -92,6 +94,13 @@ class Lists extends Component {
           <div className="form-container">
             <form className="form-list-items" onSubmit={this._onSubmit}>
               <legend className="legend-list">
+                <a className="gravatar-link">
+                  <Gravatar
+                    className="gravatar-img"
+                    size={30}
+                    email={this.props.user.email}
+                  />
+                </a>
                 {this.props.list.listTitle}
               </legend>
               <input
@@ -158,6 +167,7 @@ class Lists extends Component {
   }
 }
 const mapStateToProps = state => ({
+  user: state.auth.currentUser,
   list: state.list
 });
 

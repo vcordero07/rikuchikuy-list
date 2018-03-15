@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateItem, deleteItem } from "../../actions/lists";
+import { updateItem, deleteItem } from "../../actions/items";
 import "./Item.css";
 
 class Item extends Component {
@@ -32,8 +32,8 @@ class Item extends Component {
   _delete = e => {
     let listID = this.props.data._list._id;
     let itemID = this.props.data.id;
-    console.log("listID:", listID);
-    console.log("itemID:", itemID);
+    // console.log("listID:", listID);
+    // console.log("itemID:", itemID);
     this.props.dispatch(deleteItem(listID, itemID));
   };
 

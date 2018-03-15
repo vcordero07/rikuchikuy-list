@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import NavItems from "./NavItems";
 import "./NavBar.css";
 import navBarLogo from "../../../assets/img/inca7.png";
-import Gravatar from "react-gravatar";
 
 export default class NavBarSection extends Component {
   state = {
@@ -55,13 +54,6 @@ export default class NavBarSection extends Component {
           </div>
           {this.props.loggedIn ? (
             <div className="collapse navbar-collapse" id="nav-collapse">
-              <a className="gravatar-link">
-                <Gravatar
-                  className="gravatar-img"
-                  size={30}
-                  email="vcordero07@gmail.com"
-                />
-              </a>
               <ul className="nav navbar-nav">{_navLinks}</ul>
             </div>
           ) : (

@@ -77,6 +77,10 @@ class Api {
   _getSingleItem(listID, itemID) {
     return this._fetch("GET", `lists/${listID}/items/${itemID}`, null);
   }
+
+  _getSingleUser() {
+    return this._fetch("GET", `users/me`, null);
+  }
 }
 
 export default new Api("https://serene-thicket-44527.herokuapp.com/api");

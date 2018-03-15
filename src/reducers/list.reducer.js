@@ -4,7 +4,10 @@ import {
   ADD_LIST_ERROR,
   GET_LIST_REQUEST,
   GET_LIST_SUCCESS,
-  GET_LIST_ERROR,
+  GET_LIST_ERROR
+} from "../actions/lists";
+
+import {
   ADD_ITEM_REQUEST,
   ADD_ITEM_SUCCESS,
   ADD_ITEM_ERROR,
@@ -17,7 +20,7 @@ import {
   UPDATE_ITEM_REQUEST,
   UPDATE_ITEM_SUCCESS,
   UPDATE_ITEM_ERROR
-} from "../actions/lists";
+} from "../actions/items";
 
 const initialState = {
   listID: null,
