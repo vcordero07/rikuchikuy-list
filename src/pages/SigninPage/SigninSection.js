@@ -34,7 +34,7 @@ class SigninSection extends Component {
     return (
       <section className="signin">
         <div className="container">
-          <div className="row">
+          <div className="row nomargin">
             <div className="signin-col">
               <form className="form-signin" onSubmit={this._onSubmit}>
                 <a href="/">
@@ -80,7 +80,7 @@ class SigninSection extends Component {
                 </button>
               </form>
 
-              <div className="row">
+              <div className="row nomargin">
                 <div className="signup-link">
                   New? <a href="/signup"> Create an account</a>
                 </div>

@@ -36,7 +36,7 @@ class SignupSection extends Component {
     return (
       <section className="signup">
         <div className="container">
-          <div className="row">
+          <div className="row nomargin">
             <div className="signup-col">
               <form className="form-signup" onSubmit={this._onSubmit}>
                 <a href="/">
@@ -76,7 +76,6 @@ class SignupSection extends Component {
                   value={this.state.email}
                   onChange={this._onChange}
                   required
-                  autoFocus
                 />
 
                 <label htmlFor="password" className="sr-only">
@@ -98,7 +97,7 @@ class SignupSection extends Component {
                 </button>
               </form>
 
-              <div className="row">
+              <div className="row nomargin">
                 <div className="signin-link">
                   Have an account? <a href="/signin">Sign In</a>
                 </div>
