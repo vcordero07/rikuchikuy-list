@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getList } from "../../actions/lists";
 import { login } from "../../actions/auth";
+
+import { ToastContainer, toast } from "react-toastify";
 import signinLogo from "../../assets/img/inca5.png";
 
 // import "./Signins.css";
@@ -19,15 +21,36 @@ class SigninSection extends Component {
 
   _onSubmit = e => {
     e.preventDefault();
+    this._fetchData();
+  };
+
+  _fetchData = async () => {
     const user = {
       username: this.state.username,
       password: this.state.password
     };
-    return this.props
-      .dispatch(login(user.username, user.password))
-      .then(async () => {
-        await this.props.dispatch(getList());
-      });
+
+    await this.props.dispatch(login(user.username, user.password));
+    await this.props.dispatch(getList());
+
+    if (this.props.signinError) {
+      this._notify();
+    }
+  };
+
+  _notify = () => {
+    let code = this.props.formError.code;
+    let message;
+    if (code === 401) {
+      message = "Incorrect username or password";
+    } else {
+      message = "Unable to login, please try again";
+    }
+    console.log("code:", code);
+    console.log("message:", message);
+    toast.error(message, {
+      position: toast.POSITION.BOTTOM_RIGHT
+    });
   };
 
   render() {
@@ -109,9 +132,16 @@ class SigninSection extends Component {
             </div>
           </div>
         </div>
+
+        <ToastContainer />
       </section>
     );
   }
 }
 
-export default connect()(SigninSection);
+const mapStateToProps = state => ({
+  signinError: state.auth.error !== null,
+  formError: state.auth.error
+});
+
+export default connect(mapStateToProps)(SigninSection);
