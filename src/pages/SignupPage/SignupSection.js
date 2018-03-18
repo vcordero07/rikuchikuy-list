@@ -5,6 +5,7 @@ import { addList } from "../../actions/lists";
 import { login } from "../../actions/auth";
 import signupLogo from "../../assets/img/inca5.png";
 // import "./Signup.css";
+import { ToastContainer, toast } from "react-toastify";
 
 class SignupSection extends Component {
   state = {
@@ -21,14 +22,38 @@ class SignupSection extends Component {
 
   _onSubmit = e => {
     e.preventDefault();
+    this._fetchData();
+  };
+
+  _fetchData = async () => {
     const user = {
       username: this.state.username,
       password: this.state.password,
       email: this.state.email
     };
-    return this.props.dispatch(registerUser(user)).then(async () => {
-      await this.props.dispatch(login(user.username, user.password));
-      this.props.dispatch(addList(`${user.username} wish list`));
+    await this.props.dispatch(registerUser(user));
+    await this.props.dispatch(login(user.username, user.password));
+    await this.props.dispatch(addList(`${user.username} wish list`));
+
+    if (this.props.signupError) {
+      console.log("this.props.signupError test:");
+      this._notify();
+    }
+  };
+
+  _notify = () => {
+    console.log("_notify call:", true);
+    let code = this.props.formSignupError.code;
+    let message;
+    if (code === 422) {
+      message = this.props.formSignupError.message;
+    } else {
+      message = "Unable to login, please try again";
+    }
+    // console.log("code:", code);
+    // console.log("message:", message);
+    toast.error(message, {
+      position: toast.POSITION.BOTTOM_RIGHT
     });
   };
 
@@ -119,9 +144,15 @@ class SignupSection extends Component {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </section>
     );
   }
 }
 
-export default connect()(SignupSection);
+const mapStateToProps = state => ({
+  signupError: state.user.error !== null,
+  formSignupError: state.user.error
+});
+
+export default connect(mapStateToProps)(SignupSection);

@@ -39,15 +39,15 @@ class SigninSection extends Component {
   };
 
   _notify = () => {
-    let code = this.props.formError.code;
+    let code = this.props.formSigninError.code;
     let message;
     if (code === 401) {
       message = "Incorrect username or password";
     } else {
       message = "Unable to login, please try again";
     }
-    console.log("code:", code);
-    console.log("message:", message);
+    // console.log("code:", code);
+    // console.log("message:", message);
     toast.error(message, {
       position: toast.POSITION.BOTTOM_RIGHT
     });
@@ -141,7 +141,7 @@ class SigninSection extends Component {
 
 const mapStateToProps = state => ({
   signinError: state.auth.error !== null,
-  formError: state.auth.error
+  formSigninError: state.auth.error
 });
 
 export default connect(mapStateToProps)(SigninSection);

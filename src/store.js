@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import { loadAuthToken } from "./local-storage";
 import authReducer from "./reducers/auth";
 import listReducer from "./reducers/list.reducer";
+import userReducer from "./reducers/user.reducer";
 import protectedDataReducer from "./reducers/protected-data";
 import { setAuthToken, refreshAuthToken } from "./actions/auth";
 
@@ -19,7 +20,8 @@ const store = createStore(
     form: formReducer,
     auth: authReducer,
     protectedData: protectedDataReducer,
-    list: listReducer
+    list: listReducer,
+    user: userReducer
   }),
   compose(
     applyMiddleware(...middlewares),

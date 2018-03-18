@@ -1,3 +1,5 @@
+import { normalizeResponseErrors } from "./actions/utils";
+
 class Api {
   constructor(baseUrl: string) {
     this._baseUrl = baseUrl;
@@ -11,6 +13,7 @@ class Api {
 
   _fetch(method, url, body) {
     // console.log("body:", body);
+    // let jsonBody = JSON.stringify(body);
     const token = this._getUserToken();
     // console.log("token:", token);
     let headers;
@@ -32,6 +35,19 @@ class Api {
         headers
       }).then(res => res.json());
     }
+  }
+
+  _fetchOne(method, url, body) {
+    let headers = {
+      "Content-Type": "application/json"
+    };
+    return fetch(`${this._baseUrl}/${url}`, {
+      method,
+      body: JSON.stringify(body),
+      headers
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json());
   }
 
   _addList(title) {
@@ -80,6 +96,11 @@ class Api {
 
   _getSingleUser() {
     return this._fetch("GET", `users/me`, null);
+  }
+
+  _registerUser(user) {
+    console.log("_registerUser user:", user);
+    return this._fetchOne("POST", "users", user);
   }
 }
 

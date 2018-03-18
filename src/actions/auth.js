@@ -1,5 +1,4 @@
 import jwtDecode from "jwt-decode";
-// import { SubmissionError } from "redux-form";
 
 import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./utils";
@@ -55,11 +54,7 @@ export const login = (username, password) => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
-    .catch(err => {
-      // const { code } = err;
-      // console.log("err:", err);
-      dispatch(authError(err));
-    });
+    .catch(err => dispatch(authError(err)));
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
