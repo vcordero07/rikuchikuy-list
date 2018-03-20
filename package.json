@@ -18,6 +18,7 @@
     "redux-form": "^7.2.3",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "sweetalert-react": "^0.4.11",
     "validator": "^9.4.1"
   },
   "scripts": {

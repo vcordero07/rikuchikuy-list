@@ -36,17 +36,19 @@ class SignupSection extends Component {
     await this.props.dispatch(addList(`${user.username} wish list`));
 
     if (this.props.signupError) {
-      console.log("this.props.signupError test:");
+      // console.log("this.props.signupError test:");
       this._notify();
     }
   };
 
   _notify = () => {
-    console.log("_notify call:", true);
+    // console.log("_notify call:", true);
     let code = this.props.formSignupError.code;
     let message;
     if (code === 422) {
-      message = this.props.formSignupError.message;
+      message = `${this.props.formSignupError.location}: ${
+        this.props.formSignupError.message
+      }`;
     } else {
       message = "Unable to login, please try again";
     }

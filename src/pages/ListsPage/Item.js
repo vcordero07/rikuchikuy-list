@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateItem, deleteItem } from "../../actions/items";
+import SweetAlert from "sweetalert-react";
+
 import "./Item.css";
 
 class Item extends Component {
@@ -57,6 +59,10 @@ class Item extends Component {
     });
   };
 
+  _toggleAlert = () => {
+    this.setState({ show: true });
+  };
+
   render() {
     // console.log(this.state);
     return (
@@ -79,7 +85,11 @@ class Item extends Component {
                 :]{" "}
               </button>
             ) : (
-              <button type="button" className="btn-item" onClick={this._delete}>
+              <button
+                type="button"
+                className="btn-item"
+                onClick={this._toggleAlert}
+              >
                 Delete
               </button>
             )}
@@ -127,6 +137,24 @@ class Item extends Component {
             </div>
           )}
         </div>
+
+        <SweetAlert
+          show={this.state.show}
+          title="Delete Item"
+          text="Are you sure you want to delete this item?"
+          showCancelButton
+          onConfirm={() => {
+            console.log("confirm");
+            this._delete();
+            this.setState({ show: false });
+          }}
+          onCancel={() => {
+            console.log("cancel");
+            this.setState({ show: false });
+          }}
+          onEscapeKey={() => this.setState({ show: false })}
+          onOutsideClick={() => this.setState({ show: false })}
+        />
       </div>
     );
   }

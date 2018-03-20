@@ -54,11 +54,17 @@ export default class NavBarSection extends Component {
           </div>
           {this.props.loggedIn ? (
             <div className="collapse navbar-collapse" id="nav-collapse">
-              <ul className="nav navbar-nav">{_navLinks}</ul>
+              <div className="navbar-test">
+                {" "}
+                <ul className="nav navbar-nav">{_navLinks}</ul>
+              </div>
             </div>
           ) : (
             <div className="collapse navbar-collapse" id="nav-collapse">
-              <ul className="nav navbar-nav">{_navLinks}</ul>
+              <div className="navbar-test">
+                {" "}
+                <ul className="nav navbar-nav">{_navLinks}</ul>
+              </div>
             </div>
           )}
 
