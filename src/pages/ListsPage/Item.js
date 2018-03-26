@@ -1,19 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateItem, deleteItem } from "../../actions/items";
-import SweetAlert from "sweetalert-react";
+import swal from "sweetalert2";
+import { Overlay, Popover } from "react-bootstrap";
 
 import "./Item.css";
 
 class Item extends Component {
-  state = {
-    title: this.props.data.title,
-    note: this.props.data.note,
-    bgcolor: this.props.data.bgcolor || "#ffffff",
-    link: this.props.data.link,
-    price: this.props.data.price,
-    isEditMode: false
-  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleClick = e => {
+      this.setState({ target: e.target, show: !this.state.show });
+    };
+
+    this.state = {
+      show: false,
+      title: this.props.data.title,
+      note: this.props.data.note,
+      bgcolor: this.props.data.bgcolor || "#ffffff",
+      link: this.props.data.link,
+      price: this.props.data.price,
+      isEditMode: false
+    };
+  }
 
   _update = e => {
     let listID = this.props.data._list._id;
@@ -60,7 +70,28 @@ class Item extends Component {
   };
 
   _toggleAlert = () => {
-    this.setState({ show: true });
+    swal({
+      title: "Delete Item",
+      text: `Are you sure you want to delete item ${this.state.title}?`,
+      type: "warning",
+      showCancelButton: true,
+      reverseButtons: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, keep it"
+    }).then(result => {
+      if (result.value) {
+        this._delete();
+        swal("Deleted!", "Item was deleted from the list.", "success");
+      } else if (result.dismiss === swal.DismissReason.cancel) {
+        // swal("Cancelled", "Your item is still on your list:)", "error");
+      }
+    });
+  };
+
+  _changeBGColor = value => {
+    this.setState({
+      bgcolor: value
+    });
   };
 
   render() {
@@ -80,9 +111,13 @@ class Item extends Component {
               {this.state.isEditMode ? "Update" : "Edit"}
             </button>
             {this.state.isEditMode ? (
-              <button type="button" className="btn-item" disabled>
+              <button
+                type="button"
+                className="btn-item-edit"
+                onClick={this.handleClick}
+              >
                 {" "}
-                :]{" "}
+                Color{" "}
               </button>
             ) : (
               <button
@@ -137,24 +172,18 @@ class Item extends Component {
             </div>
           )}
         </div>
-
-        <SweetAlert
+        <Overlay
           show={this.state.show}
-          title="Delete Item"
-          text="Are you sure you want to delete this item?"
-          showCancelButton
-          onConfirm={() => {
-            console.log("confirm");
-            this._delete();
-            this.setState({ show: false });
-          }}
-          onCancel={() => {
-            console.log("cancel");
-            this.setState({ show: false });
-          }}
-          onEscapeKey={() => this.setState({ show: false })}
-          onOutsideClick={() => this.setState({ show: false })}
-        />
+          target={this.state.target}
+          trigger="click"
+          placement="bottom"
+          containerPadding={20}
+        >
+          <Popover id="popover-contained" title="Pick a color:">
+            <div className="red-bgcolor" />
+            <div className="blue-bgcolor" />
+          </Popover>
+        </Overlay>
       </div>
     );
   }

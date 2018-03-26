@@ -25,6 +25,8 @@ class SignupSection extends Component {
     this._fetchData();
   };
 
+  //fix this here
+
   _fetchData = async () => {
     const user = {
       username: this.state.username,
@@ -35,6 +37,7 @@ class SignupSection extends Component {
     await this.props.dispatch(login(user.username, user.password));
     await this.props.dispatch(addList(`${user.username} wish list`));
 
+    //only works when the password is less than 10
     if (this.props.signupError) {
       // console.log("this.props.signupError test:");
       this._notify();

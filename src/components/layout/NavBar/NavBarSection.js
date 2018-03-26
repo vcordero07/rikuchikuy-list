@@ -52,21 +52,11 @@ export default class NavBarSection extends Component {
               <span className="navbar-title">Rikuchikuy List</span>
             </a>
           </div>
-          {this.props.loggedIn ? (
-            <div className="collapse navbar-collapse" id="nav-collapse">
-              <div className="navbar-test">
-                {" "}
-                <ul className="nav navbar-nav">{_navLinks}</ul>
-              </div>
-            </div>
-          ) : (
-            <div className="collapse navbar-collapse" id="nav-collapse">
-              <div className="navbar-test">
-                {" "}
-                <ul className="nav navbar-nav">{_navLinks}</ul>
-              </div>
-            </div>
-          )}
+
+          <div className="collapse navbar-collapse" id="nav-collapse">
+            <div className="navbar-test" />
+            <ul className="nav navbar-nav">{_navLinks}</ul>
+          </div>
 
           <div />
         </nav>

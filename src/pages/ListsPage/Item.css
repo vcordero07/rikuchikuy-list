@@ -57,7 +57,7 @@
   border: none;
   outline: none;
   width: 100%;
-  font-size: 24px;
+  font-size: 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.26);
   margin-top: 12px;
   margin-bottom: 8px;
@@ -101,7 +101,20 @@
   text-align: right;
 }
 
-.sweet-alert button.cancel {
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.swal2-popup .swal2-styled.swal2-cancel {
   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   background-color: #fff !important;
@@ -112,7 +125,7 @@
   line-height: 25px;
 }
 
-.sweet-alert button.confirm {
+.swal2-popup .swal2-styled.swal2-confirm {
   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2) !important;
   text-transform: uppercase;
   background-color: #e74c3c !important;
@@ -121,6 +134,47 @@
   vertical-align: middle;
   border-radius: 2px;
   line-height: 25px;
+}
+
+.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
+  background-image: none;
+}
+
+.swal2-popup {
+  font-size: 1.5rem;
+}
+
+.swal2-icon.swal2-warning {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.red-bgcolor {
+  background-color: #e74c3c;
+  height: 26px;
+  width: 26px;
+  margin: 2px;
+  border: 2px solid transparent;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-block;
+  outline: none !important;
+}
+
+.blue-bgcolor {
+  background-color: #3498fb;
+  height: 26px;
+  width: 26px;
+  margin: 2px;
+  border: 2px solid transparent;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-block;
+  outline: none !important;
 }
 
 @media screen and (max-width: 450px) {

@@ -45,7 +45,7 @@ body.home {}
   margin-top: 20px;
   margin-bottom: 10px;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -57,7 +57,7 @@ body.home {}
   line-height: 110%;
   margin: 0.82rem 0 0.656rem 0;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 400;
   color: inherit;
 }
 
@@ -143,6 +143,10 @@ div.row {
 
 .nomargin {
   margin: 0 !important;
+}
+
+.home-signin {
+  margin-top: 30px;
 }
 
 @media (min-width: 768px) {}
