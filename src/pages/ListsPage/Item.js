@@ -2,28 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateItem, deleteItem } from "../../actions/items";
 import swal from "sweetalert2";
-import { Overlay, Popover } from "react-bootstrap";
+// import { Overlay, Popover } from "react-bootstrap";
 
 import "./Item.css";
 
 class Item extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleClick = e => {
-      this.setState({ target: e.target, show: !this.state.show });
-    };
-
-    this.state = {
-      show: false,
-      title: this.props.data.title,
-      note: this.props.data.note,
-      bgcolor: this.props.data.bgcolor || "#ffffff",
-      link: this.props.data.link,
-      price: this.props.data.price,
-      isEditMode: false
-    };
-  }
+  state = {
+    show: false,
+    title: this.props.data.title,
+    note: this.props.data.note,
+    bgcolor: "#ffffff",
+    link: this.props.data.link,
+    price: this.props.data.price,
+    isEditMode: false
+  };
 
   _update = e => {
     let listID = this.props.data._list._id;
@@ -88,102 +80,105 @@ class Item extends Component {
     });
   };
 
-  _changeBGColor = value => {
-    this.setState({
-      bgcolor: value
-    });
+  _changeBGColor = e => {
+    e.preventDefault();
+    if (this.state.bgcolor === "#ffffff") {
+      console.log("bgcolor was: #ffffff, and it should be now #3498db");
+      this.setState({ bgcolor: "#3498db" });
+    } else if (this.state.bgcolor === "#3498db") {
+      console.log("bgcolor was: #3498db, and it should be now #1abc9c");
+      this.setState({ bgcolor: "##1abc9c" });
+    } else if (this.state.bgcolor === "#1abc9c") {
+      console.log("bgcolor was: #1abc9c, and it should be now #f1c40f");
+      this.setState({ bgcolor: "#f1c40f" });
+    } else if (this.state.bgcolor === "f1c40f") {
+      console.log("bgcolor was: #f1c40f, and it should be now #ffffff");
+      this.setState({ bgcolor: "#ffffff" });
+    } else {
+      console.log("test color");
+    }
   };
 
   render() {
     // console.log(this.state);
     return (
-      <div className="items-container">
-        <div
-          className="item-content"
-          style={{ backgroundColor: this.state.bgcolor }}
-        >
-          <div className="item-btns">
-            <button
-              type="button"
-              className="btn-item-edit"
-              onClick={this._getUpdate}
-            >
-              {this.state.isEditMode ? "Update" : "Edit"}
-            </button>
-            {this.state.isEditMode ? (
+      <div>
+        <div className="items-container">
+          <div
+            className="item-content"
+            style={{ backgroundColor: this.state.bgcolor }}
+          >
+            <div className="item-btns">
               <button
                 type="button"
                 className="btn-item-edit"
-                onClick={this.handleClick}
+                onClick={this._getUpdate}
               >
-                {" "}
-                Color{" "}
+                {this.state.isEditMode ? "Update" : "Edit"}
               </button>
+              {this.state.isEditMode ? (
+                <button
+                  type="button"
+                  className="btn-item-edit"
+                  onClick={this._changeBGColor}
+                >
+                  {" "}
+                  Color{" "}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn-item"
+                  onClick={this._toggleAlert}
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+            {this.state.isEditMode ? (
+              <div className="item-info">
+                <input
+                  className="item-title-input-edit"
+                  value={this.state.title}
+                  onChange={this._onChange}
+                  name="title"
+                />
+                <input
+                  className="item-note-input-edit"
+                  value={this.state.note}
+                  onChange={this._onChange}
+                  name="note"
+                />
+                <input
+                  className="item-link-input-edit"
+                  value={this.state.link}
+                  onChange={this._onChange}
+                  name="link"
+                />
+                <input
+                  className="item-price-input-edit"
+                  value={this.state.price}
+                  onChange={this._onChange}
+                  name="price"
+                />
+              </div>
             ) : (
-              <button
-                type="button"
-                className="btn-item"
-                onClick={this._toggleAlert}
-              >
-                Delete
-              </button>
+              <div className="item-info">
+                <h3>
+                  <a
+                    href={this.state.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {this.state.title}
+                  </a>
+                </h3>
+                <h5>{this.state.note}</h5>
+                <h5>{this.state.price}</h5>
+              </div>
             )}
           </div>
-          {this.state.isEditMode ? (
-            <div className="item-info">
-              <input
-                className="item-title-input-edit"
-                value={this.state.title}
-                onChange={this._onChange}
-                name="title"
-              />
-              <input
-                className="item-note-input-edit"
-                value={this.state.note}
-                onChange={this._onChange}
-                name="note"
-              />
-              <input
-                className="item-link-input-edit"
-                value={this.state.link}
-                onChange={this._onChange}
-                name="link"
-              />
-              <input
-                className="item-price-input-edit"
-                value={this.state.price}
-                onChange={this._onChange}
-                name="price"
-              />
-            </div>
-          ) : (
-            <div className="item-info">
-              <h3>
-                <a
-                  href={this.state.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {this.state.title}
-                </a>
-              </h3>
-              <h5>{this.state.note}</h5>
-              <h5>{this.state.price}</h5>
-            </div>
-          )}
         </div>
-        <Overlay
-          show={this.state.show}
-          target={this.state.target}
-          trigger="click"
-          placement="bottom"
-          containerPadding={20}
-        >
-          <Popover id="popover-contained" title="Pick a color:">
-            <div className="red-bgcolor" />
-            <div className="blue-bgcolor" />
-          </Popover>
-        </Overlay>
       </div>
     );
   }

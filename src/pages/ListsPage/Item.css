@@ -177,6 +177,17 @@ select:-webkit-autofill:focus {
   outline: none !important;
 }
 
+div.item-info a {
+  color: #000;
+  text-decoration: none;
+}
+
+div.item-info a:hover,
+div.item-info a:focus {
+  color: #000;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 450px) {
   .item-info h3 {
     font-size: 16px !important;
