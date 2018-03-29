@@ -11,7 +11,7 @@ class Item extends Component {
     show: false,
     title: this.props.data.title,
     note: this.props.data.note,
-    bgcolor: "#ffffff",
+    bgcolor: this.props.data.bgcolor || "#ffffff",
     link: this.props.data.link,
     price: this.props.data.price,
     isEditMode: false
@@ -24,7 +24,8 @@ class Item extends Component {
       title: this.state.title,
       note: this.state.note,
       link: this.state.link,
-      price: this.state.price
+      price: this.state.price,
+      bgcolor: this.state.bgcolor
     };
 
     this.props.dispatch(updateItem(listID, item));
@@ -82,20 +83,25 @@ class Item extends Component {
 
   _changeBGColor = e => {
     e.preventDefault();
-    if (this.state.bgcolor === "#ffffff") {
-      console.log("bgcolor was: #ffffff, and it should be now #3498db");
-      this.setState({ bgcolor: "#3498db" });
-    } else if (this.state.bgcolor === "#3498db") {
-      console.log("bgcolor was: #3498db, and it should be now #1abc9c");
-      this.setState({ bgcolor: "##1abc9c" });
-    } else if (this.state.bgcolor === "#1abc9c") {
-      console.log("bgcolor was: #1abc9c, and it should be now #f1c40f");
-      this.setState({ bgcolor: "#f1c40f" });
-    } else if (this.state.bgcolor === "f1c40f") {
-      console.log("bgcolor was: #f1c40f, and it should be now #ffffff");
-      this.setState({ bgcolor: "#ffffff" });
-    } else {
-      console.log("test color");
+    console.log("current state", this.state.bgcolor);
+    switch (this.state.bgcolor) {
+      case "#fff":
+        this.setState({ bgcolor: "#3498db" });
+        break;
+      case "#ffffff":
+        this.setState({ bgcolor: "#3498db" });
+        break;
+      case "#3498db":
+        this.setState({ bgcolor: "#1abc9c" });
+        break;
+      case "#1abc9c":
+        this.setState({ bgcolor: "#f1c40f" });
+        break;
+      case "#f1c40f":
+        this.setState({ bgcolor: "#ffffff" });
+        break;
+      default:
+        console.log("defaul value");
     }
   };
 
