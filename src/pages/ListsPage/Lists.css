@@ -120,3 +120,18 @@ textarea:-webkit-autofill,
 select:-webkit-autofill {
   background-color: #fff !important;
 }
+
+@media screen and (max-width: 450px) {
+  .link-list {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  }
+  .price-list {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+    border-left: 0;
+    text-align: left;
+  }
+}

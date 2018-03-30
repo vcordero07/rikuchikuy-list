@@ -37,8 +37,8 @@ class Item extends Component {
   _delete = e => {
     let listID = this.props.data._list._id;
     let itemID = this.props.data.id;
-    // console.log("listID:", listID);
-    // console.log("itemID:", itemID);
+    // //console.log("listID:", listID);
+    // //console.log("itemID:", itemID);
     this.props.dispatch(deleteItem(listID, itemID));
   };
 
@@ -83,30 +83,38 @@ class Item extends Component {
 
   _changeBGColor = e => {
     e.preventDefault();
-    console.log("current state", this.state.bgcolor);
+    //console.log("current state", this.state.bgcolor);
+
     switch (this.state.bgcolor) {
       case "#fff":
-        this.setState({ bgcolor: "#3498db" });
+        this.setState({ bgcolor: "#4298CE" });
         break;
       case "#ffffff":
-        this.setState({ bgcolor: "#3498db" });
+        this.setState({ bgcolor: "#4298CE" });
         break;
-      case "#3498db":
-        this.setState({ bgcolor: "#1abc9c" });
+      case "#4298CE":
+        this.setState({ bgcolor: "#A9D761" });
         break;
-      case "#1abc9c":
-        this.setState({ bgcolor: "#f1c40f" });
+      case "#A9D761":
+        this.setState({ bgcolor: "#FFC857" });
         break;
-      case "#f1c40f":
+      case "#FFC857":
+        this.setState({ bgcolor: "#9079AE" });
+        break;
+      case "#9079AE":
+        this.setState({ bgcolor: "#EFBCD5" });
+        break;
+      case "#EFBCD5":
         this.setState({ bgcolor: "#ffffff" });
         break;
       default:
-        console.log("defaul value");
+        this.setState({ bgcolor: "#ffffff" });
+      //console.log("defaul value");
     }
   };
 
   render() {
-    // console.log(this.state);
+    // //console.log(this.state);
     return (
       <div>
         <div className="items-container">
