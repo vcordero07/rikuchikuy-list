@@ -19,8 +19,8 @@ The purpose of this app is to allow the user to store their wish list ideas in o
 
 ## Screenshots
 
-![Screenshot-1](https://github.com/vcordero07/tekkojuku-cal/raw/master/assets/img/screenshot-1-cal.png "Screenshot-1-Cal")
-![Screenshot-2](https://github.com/vcordero07/tekkojuku-cal/raw/master/assets/img/Screenshot-2-inst.png "Screenshot-2-Inst")
+![Screenshot-1](https://github.com/vcordero07/rikuchikuy-list/raw/master/src/assets/img/www.rikuchikuy-list.xyz_2.png "Screenshot-2-Cal")
+![Screenshot-2](https://github.com/vcordero07/rikuchikuy-list/raw/master/src/assets/img/www.rikuchikuy-list.xyz_1.png "Screenshot-1-Inst")
 
 ---
 
