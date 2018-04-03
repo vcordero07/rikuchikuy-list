@@ -26,7 +26,7 @@ The purpose of this app is to allow the user to store their wish list ideas in o
 
 ## Live Site
 
-You can find Rikuchikuy-list at [https://www.rikuchikuy-list.com/](https://www.rikuchikuy-list.com/)
+You can find Rikuchikuy-list at [https://www.rikuchikuy-list.xyz/](https://www.rikuchikuy-list.xyz/)
 
 ---
 
