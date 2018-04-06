@@ -137,7 +137,7 @@ select:-webkit-autofill:focus {
 }
 
 .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
-  background-image: none;
+  background-image: none !important;
 }
 
 .swal2-popup {
